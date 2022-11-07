@@ -1,4 +1,6 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -6,8 +8,13 @@
     scroll-behavior: smooth;
 }
 
-:root{
-    --color-main: #4E2096;
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+:root {
+    --color-main: #F57A5D;
+    --color-secondary: #291F60;
     --color-green: #33CC66;
     --color-red: #EA534A;
 
@@ -18,7 +25,10 @@
     --text-5: 0.625rem; /* 10px */
     --text-6: 0.5rem; /* 8px */
 
-    --radius-4: 4px; 
+    --radius-4: 4px;
     --radius-16: 16px;
-}
 
+    --weigth-1: 700;
+    --weigth-2: 600;
+    --weigth-3: 400;
+}
