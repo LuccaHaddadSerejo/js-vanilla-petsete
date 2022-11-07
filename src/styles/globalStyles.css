@@ -7,6 +7,18 @@
 }
 
 :root{
-    
+    --color-main: #4E2096;
+    --color-green: #33CC66;
+    --color-red: #EA534A;
+
+    --text-1: 1.75rem; /* 28px */
+    --text-2: 1.5rem; /* 24px */
+    --text-3: 1rem; /* 16px */
+    --text-4: 0.875rem; /* 14px */
+    --text-5: 0.625rem; /* 10px */
+    --text-6: 0.5rem; /* 8px */
+
+    --radius-4: 4px; 
+    --radius-16: 16px;
 }
 
