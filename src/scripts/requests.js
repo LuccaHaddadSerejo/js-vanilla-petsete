@@ -12,7 +12,12 @@ const login = async (body) => {
             body: JSON.stringify(body)
         })
         const res = await request.json()
-        setLocalStorage(res)
+        if(res.token){
+            setLocalStorage(res)
+            window.location.replace("../../index.html")
+
+        }
+        
         return res
 
 
