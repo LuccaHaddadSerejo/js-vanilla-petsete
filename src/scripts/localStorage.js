@@ -1,7 +1,7 @@
 function getLocalStorage() {
     const storage = localStorage.getItem("token-user")
     if (!storage) {
-        return
+        return []
     }
     return JSON.parse(storage)
 }
@@ -18,5 +18,5 @@ function clearStorage() {
 export {
     setLocalStorage,
     clearStorage,
-    getLocalStorage
+    getLocalStorage,
 }
