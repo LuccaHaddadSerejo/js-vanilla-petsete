@@ -63,3 +63,53 @@
     font-size: var(--text-4);
     font-weight: var(--weigth-2);
 }
+
+
+
+/* Inputs e Buttons Login */
+
+.seta-return{
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    width: 40px;
+}
+
+.inputs-login{
+    padding: 20px;
+    width: 80%;
+    height: 70px;
+    border-radius: var(--radius-16);
+    outline: none;
+    border: var(--border-2) var(--color-main);
+    background-color: var(--color-white);
+    color: var(--color-black);
+    font-size: var(--text-3);
+    
+}
+.inputs-login::-webkit-input-placeholder{
+    color: var(--color-black);
+    font-size: var(--text-3);
+   
+}
+
+.inputs-login:hover{
+    border: var(--border-2) transparent;
+    background-color: var(--color-main);
+    color: var(--color-white);
+    
+}
+#login-button{
+    width: 80%;
+    height: 70px;
+    margin-bottom: 18px;
+}
+
+#login-button:hover{
+        border: transparent;
+        background-color: var(--color-main);
+        color: var(--color-white);
+        
+}
+
+
