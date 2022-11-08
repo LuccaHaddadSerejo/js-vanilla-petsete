@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../styles/displays.css">
     <link rel="stylesheet" href="../styles/buttons.css">
     <link rel="stylesheet" href="../styles/register.css">
+    <script type="module" defer src="../scripts/register.js"></script>
     <title>Pet Sete - Cadastro</title>
 </head>
 
@@ -21,11 +22,11 @@
                     <h3 class="formTitle">Cadastro</h3>
                 </div>
                 <form id="form" class="form">
-                    <input id="username" type="text" name="inputUser" placeholder="Digite seu nome">
-                    <input id="email" type="email" name="email" placeholder="Digite seu email">
-                    <input id="password" type="password" name="password" placeholder="Digite sua senha aqui">
-                    <input id="avatar" type="text" name="profileImg" placeholder="Link da sua foto">
-                    <button id="registerButton" class="button-white-red" type="submit" value="Enviar">Cadastrar</button>
+                    <input id="username" type="text" name="inputUser" placeholder="Digite seu nome" required>
+                    <input id="email" type="email" name="email" placeholder="Digite seu email" required>
+                    <input id="password" type="password" name="password" placeholder="Digite sua senha aqui" required>
+                    <input id="avatar" type="text" name="profileImg" placeholder="Link da sua foto" required>
+                    <button id="registerButton" class="button-white-red" type="submit" value="Enviar" required>Cadastrar</button>
                 </form>
                 <a href="../pages/login.html" class="button-white-purple">Voltar para o login</a>
             </div>
