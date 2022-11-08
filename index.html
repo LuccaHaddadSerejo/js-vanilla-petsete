@@ -9,14 +9,18 @@
     <link rel="stylesheet" href="./src/styles/header.css">
     <link rel="stylesheet" href="./src/styles/buttons.css">
     <link rel="stylesheet" href="./src/styles/homepage.css">
+    <link rel="stylesheet" href="./src/styles/footer.css">
     <link rel="icon" type="image/x-icon" href="./src/imgs/FaviconPetSete.png">
     <title>PetSete - Home</title>
 </head>
 <body>
     <header class="flex al-center jus-center">
-        <div class="flex al-center jus-between">
+        <div class="flex al-center jus-between gap18">
             <img class="logo-header" src="./src/imgs/LogoPetSete.png" alt="logo" name="logo petsete">
-            <div>
+            <div class="button-box-header flex al-center">
+                <div id="profile_avatar_box" class="profile-avatar none">
+                    <img id="profile_avatar"src="" alt="">
+                </div>
                 <button class="button-white-purple" id="register">Register</button>
                 <button class="button-purple" id="login">Login</button>
             </div>
@@ -24,13 +28,14 @@
     </header>
     <main class="flex flex-col al-center">
         <div class="container flex flex-col al-center jus-center">
-            <div class="select-box">
+            <div class="select-box flex flex-col al-center jus-between">
+                <h2>Pets em busca de um lar</h2>
                 <select name="espécies" id="select_home"></select>
             </div>
-            <ul id="card_list" class="card-list-home flex"></ul>
+            <ul id="card_list" class="card-list-home flex jus-center wrap gap36"></ul>
         </div>
     </main>
-    <footer>
+    <footer class='flex al-center jus-center'>
         <p>PetSete | Todos os direitos reservados</p>
     </footer>
     <script type="module" src="./src/scripts/homepage.js"></script>
