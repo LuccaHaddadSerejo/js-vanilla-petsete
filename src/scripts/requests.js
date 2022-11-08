@@ -1,3 +1,4 @@
+import {toast} from "./toast.js"
 const baseUrl = 'https://m2-api-adot-pet.herokuapp.com'
 
 import { getLocalStorage, setLocalStorage } from "./localStorage.js"
@@ -14,8 +15,15 @@ const login = async (body) => {
         const res = await request.json()
         if(res.token){
             setLocalStorage(res)
-            window.location.replace("../../index.html")
+            toast("Sucesso!","Login feito com sucesso")
+            setTimeout(() => {
+                window.location.replace("../../index.html")
+            }, 4000);
 
+        }else{
+            setLocalStorage(res)
+            toast("Erro!","Senha ou email inválidos")
+            
         }
         
         return res
