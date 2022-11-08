@@ -58,8 +58,8 @@
     }
 
     .main-login{
-    max-width: 1000px;
-    max-height: 700px;
+    max-width: 1200px;
+    max-height: 900px;
     margin: 0 auto;
     background: var(--color-secondary);
     display: flex;
@@ -102,7 +102,9 @@
     .inputs-login:hover{
         border: var(--border-2) var(--color-main);
         background-color: var(--color-white);
+        color: var(--color-black);    
     }
+    
 
     .slogan-login{
         color: var(--color-white);
@@ -111,9 +113,14 @@
     .btn-redirectHome{
         color: var(--color-main);
         border: var(--border-2) var(--color-main);
-        padding: 20px;
+        padding: 10px;
         text-decoration: none;
+        margin-top: 5px;
         border-radius: var(--radius-16);
+    }
+    .div-redirection > a{
+        text-decoration: none;
+        color: var(--color-main);
     }
 
 }
