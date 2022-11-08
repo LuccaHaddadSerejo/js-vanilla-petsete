@@ -44,6 +44,7 @@
 }
 
 
+
 @media (min-width:800px) {
 
     .body{
@@ -67,4 +68,28 @@
     .logo-mobile, .seta-return{
         display: none;
     }
+    #section-title{
+        display: flex;
+        background: var(--color-secondary);
+        padding: 20px;
+        min-width: 50%;
+    }
+    .section-login{
+        background: var(--color-white);
+        min-width: 50%;
+        
+        
+    }
+    
+    .inputs-login{
+        border: var(--border-2) var(--color-main);
+        background-color: var(--color-white);
+        min-width: 500px;
+        height: 80px;
+    }
+    .inputs-login:hover{
+        border: var(--border-2) var(--color-main);
+        background-color: var(--color-white);
+    }
+
 }
