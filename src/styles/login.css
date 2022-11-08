@@ -58,8 +58,8 @@
     }
 
     .main-login{
-    max-width: 1200px;
-    max-height: 900px;
+    max-width: 1000px;
+    max-height: 600px;
     margin: 0 auto;
     background: var(--color-secondary);
     display: flex;
@@ -97,7 +97,6 @@
         border: var(--border-2) var(--color-main);
         background-color: var(--color-white);
         width: 80%;
-        height: 80px;
     }
     .inputs-login:hover{
         border: var(--border-2) var(--color-main);
