@@ -1,6 +1,17 @@
-import { readAllPets } from"./requests.js"
+import { readAllPets, readProfile } from"./requests.js"
 import { getLocalStorage, clearStorage } from "./localStorage.js"
 
+const profileAvatar = async () => {
+    const token = getLocalStorage()
+    const profileAvatar = document.querySelector('#profile_avatar')
+    const profileAvatarBox = document.querySelector('#profile_avatar_box')
+    const { avatar_url } = await readProfile()
+    if (token.token) {
+        profileAvatar.src = avatar_url
+        profileAvatarBox.classList = 'profile-avatar'
+    }
+}
+profileAvatar()
 
 const changeButtonsHeader = () => {
   const token = getLocalStorage()
@@ -27,8 +38,8 @@ const buttonLogout = () => {
   if (token.token) {
     button.innerText = 'Logout'
     button.addEventListener('click', (e) => {
-        e.preventDefault()
         clearStorage()
+        window.location.replace('./src/pages/login.html')
     })
   } else {
     button.innerText = 'Login'
@@ -66,7 +77,7 @@ const renderCardsHome = async (species) => {
 renderCardsHome('Espécies')
 
 const cardCreatorHome = async (element) => {
-    const token = 'token'
+    const token = getLocalStorage()
     const {id, name, species, available_for_adoption, avatar_url} = element
     
         const card = document.createElement('li')
@@ -75,11 +86,11 @@ const cardCreatorHome = async (element) => {
         avatar.src = avatar_url
         avatar.alt = name
         const petName = document.createElement('p')
-        petName.innerText = name
+        petName.innerText = name.substring(0, 10)
         const specie = document.createElement('span')
         specie.innerText = species
 
-        if (token === 'token') {
+        if (token.token) {
 
             const button = document.createElement('button')
             button.classList = 'button-primary'
