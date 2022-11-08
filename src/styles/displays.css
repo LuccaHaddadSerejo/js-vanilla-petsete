@@ -1,6 +1,9 @@
 .flex {
     display: flex;
 }
+.none{
+    display: none;
+}
 
 .al-center {
     align-items: center;
