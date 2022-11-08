@@ -8,37 +8,35 @@
     <link rel="shortcut icon" href="../imgs/FaviconPetSete.png" type="image/x-icon">
     <link rel="stylesheet" href="../styles/globalStyles.css">
     <link rel="stylesheet" href="../styles/displays.css">
+    <link rel="stylesheet" href="../styles/buttons.css">
     <link rel="stylesheet" href="../styles/register.css">
+    <script type="module" defer src="../scripts/register.js"></script>
     <title>Pet Sete - Cadastro</title>
 </head>
 
 <body>
     <main>
-        <section id="register" class="leftCol">
-            <div class="colRContainer">
+        <section class="container">
+            <div class="colLeft">
                 <div class="headerRegister">
                     <h3 class="formTitle">Cadastro</h3>
-                    <a href="../index.html" class="whiteBtn">Voltar para o login</a>
                 </div>
                 <form id="form" class="form">
-                        <input id="username" type="text" name="inputUser" placeholder="Digite seu nome">
-                        <input id="email" type="email" name="email" placeholder="Digite seu email">
-                        <input id="password" type="password" name="password" placeholder="Digite sua senha aqui">
-                        <input id="avatar" type="text" name="profileImg" placeholder="Insira o link da sua foto aqui">
-                        <button id="registerButton" class="blueBtn" type="submit" value="Enviar">Cadastrar</button>
+                    <input id="username" type="text" name="inputUser" placeholder="Digite seu nome" required>
+                    <input id="email" type="email" name="email" placeholder="Digite seu email" required>
+                    <input id="password" type="password" name="password" placeholder="Digite sua senha aqui" required>
+                    <input id="avatar" type="text" name="profileImg" placeholder="Link da sua foto" required>
+                    <button id="registerButton" class="button-white-red" type="submit" value="Enviar" required>Cadastrar</button>
                 </form>
-                <a href="../index.html" class="whiteBtn backToLogin">Voltar para o login</a>
+                <a href="../pages/login.html" class="button-white-purple">Voltar para o login</a>
             </div>
-        </section>
 
-        <section id="title" class="rightCol">
-            <div class="colContainer">
-                <img src="../imgs/LogoPetSete.png" alt="">
-                <h2 class="subtitle"><span class="span">Estamos há alguns passos de oferecer e compartilhar amor.</span>
+            <div class="colRight">
+                <img class="imgLogo" src="../imgs/LogoPetSete.png" alt="Logo Pet Sete">
+                <h2 class="subtitle"><span class="span">Estamos há alguns passos de oferecer e compartilhar
+                        amor.</span>
                 </h2>
-                <p class="description">
-                    
-                </p>
+                <img class="imgAnimals" src="../imgs/animaisRegister.jpg" alt="Logo Pet Sete">
             </div>
         </section>
     </main>

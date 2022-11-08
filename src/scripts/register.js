@@ -1,0 +1,22 @@
+import { createUser } from "./requests.js"
+
+const eventRegister = async () => {
+    const inputUsername = document.querySelector("#username");
+    const inputEmail = document.querySelector("#email");
+    const inputPassword = document.querySelector("#password");
+    const inputAvatar = document.querySelector("#avatar");
+    const registerButton = document.querySelector("#registerButton");
+
+    registerButton.addEventListener("click", async (e) => {
+        e.preventDefault();
+        const body = {
+            name: inputUsername.value,
+            email: inputEmail.value,
+            password: inputPassword.value,
+            avatar_url: inputAvatar.value
+        }
+        await createUser(body)
+    })
+}
+eventRegister();
+

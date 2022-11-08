@@ -31,6 +31,10 @@ const createUser = async (body) => {
             body: JSON.stringify(body)
         })
         const res = await request.json()
+        if (request.ok) {
+                window.location.replace("../pages/login.html")
+        }
+        
         return res
     } catch (error) {
         console.log(error);
