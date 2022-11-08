@@ -46,8 +46,8 @@
     padding: 4px 24px;
     border-radius: var(--radius-16);
     color: var(--color-white);
-    background-color: var(--color-green);
-    border: 1px solid var(--color-green);
+    background-color: var(--color-main);
+    border: 1px solid var(--color-main);
     font-size: var(--text-4);
     font-weight: var(--weigth-2);
     margin-bottom: 42px;
