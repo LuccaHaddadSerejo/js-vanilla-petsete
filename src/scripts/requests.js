@@ -67,7 +67,7 @@ const readAll = async () => {
 const readProfile = async () => {
     const token = getLocalStorage()
     try {
-        const request = await fetch(baseUrl + 'users/profile', {
+        const request = await fetch(baseUrl + '/users/profile', {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
