@@ -1,4 +1,4 @@
-import { toast } from "./toast.js"
+import { toast, toastHome } from "./toast.js"
 const baseUrl = 'https://m2-api-adot-pet.herokuapp.com'
 
 import { getLocalStorage, setLocalStorage } from "./localStorage.js"
@@ -249,7 +249,7 @@ const createAdoption = async (body) => {
             body: JSON.stringify(body)
         })
         const res = await request.json()
-        console.log(res);
+        toastHome('Sucesso!', 'Parabéns pela adoção!')
         return res
     } catch (error) {
         console.log(error);

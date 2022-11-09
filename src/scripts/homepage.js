@@ -81,7 +81,7 @@ const cardCreatorHome = async (element) => {
     const {id, name, bread, species, available_for_adoption, avatar_url, guardian} = element
     
         const card = document.createElement('li')
-        card.classList = 'card-home flex flex-col gap18'
+        card.classList = 'card-home flex flex-col'
         const avatar = document.createElement('img')
         avatar.src = avatar_url
         avatar.alt = name
@@ -164,6 +164,7 @@ const modalAdopt = async (id, name, bread, species, avatar_url, guardian) => {
             pet_id: `${id}`
         };
         await createAdoption(body)
+        renderCardsHome('Espécies')
         modalBackground.remove()
     })
 
