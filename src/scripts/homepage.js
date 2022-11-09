@@ -54,17 +54,23 @@ buttonLogout()
 const renderCardsHome = async (species) => {
     const cardList = document.querySelector('#card_list')
     cardList.innerHTML = ''
+    const loading = document.createElement('img')
+    loading.src = './src/imgs/gifcat.gif'
+    loading.classList = 'cardlist-img1'
+    cardList.append(loading)
     let list = await readAllPets()
     if (species != 'Espécies') {
         list = list.filter(element => element.species === species && element.available_for_adoption === true)
     }
 
     if (list.length <= 0) {
+        cardList.innerHTML = ''
         cardList.insertAdjacentHTML('beforeend', `
         <p>infelizmente não temos nenhum pet desta espécie disponivel</p> 
-        <img src="./src/imgs/sadDogIcon.png" alt=""></img>
+        <img class="cardlist-img2" src="./src/imgs/sadDogIcon.png" alt=""></img>
         `)
     } else {
+        cardList.innerHTML = ''
         list.forEach(async (element) => {
             const { available_for_adoption } = element
             if (available_for_adoption) {
