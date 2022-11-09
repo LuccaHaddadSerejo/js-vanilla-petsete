@@ -1,4 +1,4 @@
-import { readAllPets, readProfile } from"./requests.js"
+import { readAllPets, readProfile, createAdoption } from"./requests.js"
 import { getLocalStorage, clearStorage } from "./localStorage.js"
 
 const profileAvatar = async () => {
@@ -78,7 +78,7 @@ renderCardsHome('Espécies')
 
 const cardCreatorHome = async (element) => {
     const token = getLocalStorage()
-    const {id, name, species, available_for_adoption, avatar_url} = element
+    const {id, name, bread, species, available_for_adoption, avatar_url, guardian} = element
     
         const card = document.createElement('li')
         card.classList = 'card-home flex flex-col gap18'
@@ -93,13 +93,13 @@ const cardCreatorHome = async (element) => {
         if (token.token) {
 
             const button = document.createElement('button')
-            button.classList = 'button-primary'
+            button.classList = 'button-primary pointer'
             button.innerText = 'Me Adota?'
             card.append(avatar, petName, specie, button)
 
-            button.addEventListener('click', (e) => {
+            button.addEventListener('click', async (e) => {
                 e.preventDefault()
-                console.log('chamar modal para adoção');
+                await modalAdopt(id, bread, name, species, avatar_url, guardian)
             })
         } else {
             card.append(avatar, petName, specie)
@@ -107,6 +107,73 @@ const cardCreatorHome = async (element) => {
         return card
     
 }
+
+const modalAdopt = async (id, name, bread, species, avatar_url, guardian) => {
+   const body = document.querySelector('body')
+
+    const modalBackground = document.createElement('div')
+    modalBackground.classList = 'modal-wrapper'
+
+    const modalBox = document.createElement('div')
+    modalBox.classList = 'modal-container'
+
+    const divBgOne = document.createElement('div')
+    divBgOne.classList = 'modal-background'
+
+    const divBgTwo = document.createElement('div')
+    divBgOne.classList = 'modal-background'
+    divBgTwo.id = 'backgroundTwo1'
+
+    const closeModalButton = document.createElement('button')
+    closeModalButton.classList = 'modal-close'
+    closeModalButton.innerText = 'X'
+
+    modalBackground.addEventListener('click', async (e) => {
+        const {className} = e.target
+        if (className === 'modal-wrapper' || className === 'modal-closel') {
+            modalBackground.remove()
+        }
+    })
+
+    const children = document.createElement('div')
+    children.classList = 'modal-content1 flex'
+
+    const divImg = document.createElement('div')
+    divImg.classList = 'flex al-center jus-center'
+    divImg.insertAdjacentHTML('beforeend', `
+    <img class='img-modal-adoption' src="${avatar_url}" alt="pet avatar">
+    `)
+
+    const divInfo = document.createElement('div')
+    divInfo.classList = 'info-modal-adoption flex flex-col gap18'
+
+    divInfo.insertAdjacentHTML('beforeend', `
+        <h2>Nome: ${name}</h2>
+        <p>Raça: ${bread}</p>
+        <p>Espécie: ${species}</p>
+        <p>Tutor: ${guardian.name}</p> 
+    `)
+   
+    const buttonAdopt = document.createElement('button')
+    buttonAdopt.classList = "button-primary pointer"
+    buttonAdopt.innerText = 'Adotar ❤'
+
+    buttonAdopt.addEventListener('click', async (e) => {
+        e.preventDefault()
+        const body =    {
+            pet_id: `${id}`
+        };
+        await createAdoption(body)
+        modalBackground.remove()
+    })
+
+    divInfo.appendChild(buttonAdopt)
+    children.append(divImg, divInfo)
+    modalBox.append(divBgOne, children, divBgTwo)
+    modalBackground.appendChild(modalBox)
+    body.appendChild(modalBackground)
+}
+
 
 const specieSelector = async () => {
     const list = await readAllPets()

@@ -13,6 +13,7 @@ const login = async (body) => {
             body: JSON.stringify(body)
         })
         const res = await request.json()
+        console.log(res)
         if(res.token){
             setLocalStorage(res)
             toast("Sucesso!","Login feito com sucesso")
@@ -20,8 +21,13 @@ const login = async (body) => {
                 window.location.replace("../../index.html")
             }, 4000);
 
-        }else{
-            setLocalStorage(res)
+        }
+        
+        else{
+            if(res.message=='Email not found'){
+                toast("Erro!","Este email não existe")
+            }
+            
             toast("Erro!","Senha ou email inválidos")
             
         }
@@ -246,6 +252,7 @@ const createAdoption = async (body) => {
             body: JSON.stringify(body)
         })
         const res = await request.json()
+        console.log(res);
         return res
     } catch (error) {
         console.log(error);
