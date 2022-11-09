@@ -129,15 +129,6 @@ const editUserData = async () => {
 
     const main = document.querySelector('.profile-main')
 
-    const image = document.querySelector('.user-img')
-    image.src = user.avatar_url
-
-    const name = document.querySelector('#userName')
-    name.innerText = `Nome: ${user.name}`
-    
-    const email = document.querySelector('#userEmail')
-    email.innerText = `Email: ${user.email}`
-
     const buttonEdit = document.querySelector('#editInfoButton')
 
     buttonEdit.addEventListener('click', ()=>{
@@ -204,10 +195,13 @@ const editUserData = async () => {
             })
             await updateProfile(body)
             readUserData()
-            container.classList.add('animation-close-modal')
+            container.classList.add('animation-close-modal')      
             setTimeout(() => {
                 wrapper.remove()
-            }, 400);     
+            }, 400);  
+            setTimeout(() => {
+                window.location.reload()
+            }, 1400);     
         })
 
         head.append(title)
