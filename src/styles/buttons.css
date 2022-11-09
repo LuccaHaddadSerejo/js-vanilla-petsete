@@ -32,6 +32,11 @@
     font-weight: 600;
 }
 
+.button-purple:hover{
+    background-color: var(--color-main);
+    transition: ease 0.4s;
+}
+
 .button-white-red {
     padding: 4px 24px;
     border-radius: var(--radius-16);
@@ -57,9 +62,9 @@
 .button-red-delete{
     padding: 4px 24px;
     border-radius: var(--radius-16);
-    color: var(--color-red);
+    color: var(--color-main);
     background-color: var(--color-white);
-    border: 1px solid var(--color-red);
+    border: 1px solid var(--color-main);
     font-size: var(--text-4);
     font-weight: var(--weigth-2);
 }

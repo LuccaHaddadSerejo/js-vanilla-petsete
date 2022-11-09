@@ -79,15 +79,57 @@
 .modal-input{
     height: 40px;
     border-radius: var(--radius-4);
-    border: 1px solid black;
+    border: 2px solid var(--color-main);
     text-indent: 20px;
     font-weight: var(--weigth-3);
     font-size: var(--text-3);
+    outline: none;
 }
 
 .modal-button{
     height: 40px;
     border-radius: var(--radius-4);
+}
+
+.modal-button-2{
+    height: 40px;
+    border-radius: var(--radius-4);
+}
+
+.modal-button:hover{
+    background-color: var(--color-main);
+    transition: ease 0.4s;
+}
+
+
+@keyframes animationModal{
+    0% {
+        transform: translateY(20px);
+        opacity: 0%;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+}
+
+.animation-popup{
+    animation: animationModal 400ms ease forwards
+}
+
+@keyframes animationModalClose{
+    0% {
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+    100% {
+        transform: translateY(20px);
+        opacity: 0%;
+    }
+}
+
+.animation-close-modal{
+    animation: animationModalClose 400ms ease forwards
 }
 
 
