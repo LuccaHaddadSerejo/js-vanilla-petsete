@@ -48,7 +48,12 @@ const createUser = async (body) => {
         })
         const res = await request.json()
         if (request.ok) {
-            window.location.replace("../pages/login.html")
+            toast("Sucesso!", "Cadastro feito com sucesso.")
+            setTimeout(() => {
+                window.location.replace("../pages/login.html")
+            }, 4000);
+        } else {
+            toast("Erro!", "Algo deu errado.")
         }
 
         return res

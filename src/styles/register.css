@@ -31,6 +31,17 @@ button {
     justify-content: center;
 }
 
+.headerRegister{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgLogoMobile {
+    width: 40%;
+    min-width: 150px;
+}
 
 .formTitle {
     font-size: var(--text-2);
@@ -64,11 +75,24 @@ button {
     display: none;
 }
 
+#registerButton {
+    width: 100%;
+    height: 44px;
+}
+
+.btn-back-login{
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
 
 
 
 @media (min-width: 800px) {
-    .body{
+    .body {
         width: 100vw;
         height: 100vh;
         display: flex;
@@ -90,6 +114,14 @@ button {
         width: 50%;
     }
 
+    .seta-return{
+        display: none;
+    }
+
+    .imgLogoMobile {
+       display: none;
+    }
+
     .form {
         width: 80%;
 
@@ -107,7 +139,7 @@ button {
     }
 
     .imgLogo {
-        width: 30%;
+        width: 40%;
     }
 
     .subtitle {
@@ -118,6 +150,28 @@ button {
     }
 
     .imgAnimals {
+        width: 70%;
+    }
+
+    .btn-redirectHome {
+        color: var(--color-main);
+        border: var(--border-2) var(--color-main);
+        padding: 10px;
+        text-decoration: none;
+        margin-top: 5px;
+        border-radius: var(--radius-16);
+    }
+
+    #registerButton {
+        width: 100%;
+        height: 44px;
+    }
+
+    .btn-back-login{
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 80%;
     }
 }
