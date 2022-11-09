@@ -112,17 +112,10 @@
 }
 .inputs-login::-webkit-input-placeholder{
     color: var(--color-black);
-    font-size: var(--text-3);
+    font-size: var(--text-4);
 
 }
 
-.inputs-login:hover{
-    border: var(--border-2) transparent;
-    background-color: var(--color-main);
-    color: var(--color-white);
-    transition: ease 0.4s;
-    
-}
 #login-button{
     width: 80%;
     height: 44px;
