@@ -218,6 +218,7 @@ const createAdoption = async (body) => {
             body: JSON.stringify(body)
         })
         const res = await request.json()
+        console.log(res);
         return res
     } catch (error) {
         console.log(error);
