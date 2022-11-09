@@ -38,20 +38,114 @@ const readUserData = async () => {
     
     const email = document.querySelector('#userEmail')
     email.innerText = `Email: ${user.email}`
+
 }
 
 readUserData()
 
+const deleteUserAccount = async () =>{
+
+    const main = document.querySelector('.profile-main')
+    const buttonDelete = document.querySelector('#deleteAccountButton')
+
+    buttonDelete.addEventListener('click', ()=>{
+        const wrapper = document.createElement('div')
+        wrapper.classList = 'modal-wrapper'
+
+        const container = document.createElement('div')
+        container.classList = 'modal-container animation-popup'
+
+        const backgroundColorOne = document.createElement('div')
+        backgroundColorOne.classList = 'modal-background'
+
+        const closeButton = document.createElement('button')
+        closeButton.classList = 'modal-close'
+        closeButton.innerText = 'X'
+   
+        const content = document.createElement('div')
+        content.classList = 'modal-content'
+
+        const head = document.createElement('div')
+        head.classList = 'modal-header'
+
+        const title = document.createElement('h2')
+        title.classList = 'modal-title'
+        title.innerText = 'Deseja mesmo deletar sua conta?'
+
+        const divButtons = document.createElement('div')
+        divButtons.classList = 'modal-div-buttons'
+
+        const buttonCancel = document.createElement('button')
+        buttonCancel.classList = 'pointer button-purple modal-button'
+        buttonCancel.innerText = 'Não desejo deletar minha conta'
+
+        const buttonConfirm = document.createElement('button')
+        buttonConfirm.classList = 'pointer button-red-delete modal-button-2'
+        buttonConfirm.innerText = 'Quero deletar minha conta'
+
+        const backgroundColorTwo = document.createElement('div') 
+        backgroundColorTwo.classList = 'modal-background'
+        backgroundColorTwo.id = 'backgroundTwo'
+
+
+        closeButton.addEventListener('click', ()=>{
+            container.classList.add('animation-close-modal')
+            setTimeout(() => {
+                wrapper.remove()
+            }, 400);     
+        })
+
+        buttonCancel.addEventListener('click', ()=>{
+            container.classList.add('animation-close-modal')
+            setTimeout(() => {
+                wrapper.remove()
+            }, 400);     
+        })
+
+        buttonConfirm.addEventListener('click', async ()=>{
+            await deleteProfile()
+            localStorage.removeItem('token-user')
+            container.classList.add('animation-close-modal')
+            setTimeout(() => {
+                wrapper.remove()
+                window.location.replace('../../index.html')
+            }, 400);     
+        })
+
+        head.append(title) 
+        divButtons.append(buttonCancel, buttonConfirm)
+        content.append(head, divButtons)
+        backgroundColorOne.append(closeButton)
+        container.append(backgroundColorOne, content, backgroundColorTwo)
+        wrapper.append(container)
+        main.append(wrapper)
+    })
+}
+
+deleteUserAccount()
+
 const editUserData = async () => {
     const user = await readProfile()
+
     const main = document.querySelector('.profile-main')
+
+    const image = document.querySelector('.user-img')
+    image.src = user.avatar_url
+
+    const name = document.querySelector('#userName')
+    name.innerText = `Nome: ${user.name}`
+    
+    const email = document.querySelector('#userEmail')
+    email.innerText = `Email: ${user.email}`
+
     const buttonEdit = document.querySelector('#editInfoButton')
+
     buttonEdit.addEventListener('click', ()=>{
         const wrapper = document.createElement('div')
         wrapper.classList = 'modal-wrapper'
 
         const container = document.createElement('div')
-        container.classList = 'modal-container'
+        container.classList = 'modal-container animation-popup'
 
         const backgroundColorOne = document.createElement('div')
         backgroundColorOne.classList = 'modal-background'
@@ -93,7 +187,10 @@ const editUserData = async () => {
 
 
         closeButton.addEventListener('click', ()=>{
-            wrapper.remove()
+            container.classList.add('animation-close-modal')
+            setTimeout(() => {
+                wrapper.remove()
+            }, 400);     
         })
 
         form.addEventListener('submit', async(event)=>{
@@ -107,77 +204,15 @@ const editUserData = async () => {
             })
             await updateProfile(body)
             readUserData()
-            wrapper.remove()
+            container.classList.add('animation-close-modal')
+            setTimeout(() => {
+                wrapper.remove()
+            }, 400);     
         })
 
         head.append(title)
         form.append(inputOne, inputTwo, formButton)
         content.append(head, form)
-        backgroundColorOne.append(closeButton)
-        container.append(backgroundColorOne, content, backgroundColorTwo)
-        wrapper.append(container)
-        main.append(wrapper)
-    })
-
-    const buttonDelete = document.querySelector('#deleteAccountButton')
-    buttonDelete.addEventListener('click', ()=>{
-        const wrapper = document.createElement('div')
-        wrapper.classList = 'modal-wrapper'
-
-        const container = document.createElement('div')
-        container.classList = 'modal-container'
-
-        const backgroundColorOne = document.createElement('div')
-        backgroundColorOne.classList = 'modal-background'
-
-        const closeButton = document.createElement('button')
-        closeButton.classList = 'modal-close'
-        closeButton.innerText = 'X'
-   
-        const content = document.createElement('div')
-        content.classList = 'modal-content'
-
-        const head = document.createElement('div')
-        head.classList = 'modal-header'
-
-        const title = document.createElement('h2')
-        title.classList = 'modal-title'
-        title.innerText = 'Deseja mesmo deletar sua conta?'
-
-        const divButtons = document.createElement('div')
-        divButtons.classList = 'modal-div-buttons'
-
-        const buttonCancel = document.createElement('button')
-        buttonCancel.classList = 'pointer button-purple modal-button'
-        buttonCancel.innerText = 'Não desejo deletar minha conta'
-
-        const buttonConfirm = document.createElement('button')
-        buttonConfirm.classList = 'pointer button-red-delete modal-button'
-        buttonConfirm.innerText = 'Quero deletar minha conta'
-
-        const backgroundColorTwo = document.createElement('div') 
-        backgroundColorTwo.classList = 'modal-background'
-        backgroundColorTwo.id = 'backgroundTwo'
-
-
-        closeButton.addEventListener('click', ()=>{
-            wrapper.remove()
-        })
-
-        buttonCancel.addEventListener('click', ()=>{
-            wrapper.remove()
-        })
-
-        buttonConfirm.addEventListener('click', async ()=>{
-            await deleteProfile()
-            localStorage.removeItem('token-user')
-            wrapper.remove()
-            window.location.replace('../../index.html')
-        })
-
-        head.append(title) 
-        divButtons.append(buttonCancel, buttonConfirm)
-        content.append(head, divButtons)
         backgroundColorOne.append(closeButton)
         container.append(backgroundColorOne, content, backgroundColorTwo)
         wrapper.append(container)
@@ -191,13 +226,13 @@ const registerPet = () => {
     const main = document.querySelector('.profile-main')
     const registerButton = document.querySelector('#newPetButton')
     const fullUl = document.querySelector('#ulFull')
-    registerButton.addEventListener('click', (event)=>{
-        event.preventDefault()
+
+    registerButton.addEventListener('click', ()=>{
         const wrapper = document.createElement('div')
         wrapper.classList = 'modal-wrapper'
 
         const container = document.createElement('div')
-        container.classList = 'modal-container'
+        container.classList = 'modal-container animation-popup'
 
         const backgroundColorOne = document.createElement('div')
         backgroundColorOne.classList = 'modal-background'
@@ -250,22 +285,28 @@ const registerPet = () => {
 
 
         closeButton.addEventListener('click', ()=>{
-            wrapper.remove()
+            container.classList.add('animation-close-modal')
+            setTimeout(() => {
+                wrapper.remove()
+            }, 400);     
         })
 
         form.addEventListener('submit', async(event)=>{
             event.preventDefault()
+            fullUl.innerHTML = ''
             const elements = [...form.elements]
             const body = {}
             elements.forEach(elt =>{
                 if(elt.tagName == "INPUT"){
                     body[elt.id] = elt.value
                 }
-            })
-            fullUl.innerHTML = ''
+            })   
             await createPet(body)
-            await renderPetList()
-            wrapper.remove()
+            renderPetList()
+            container.classList.add('animation-close-modal')
+            setTimeout(() => {
+                wrapper.remove()
+            }, 400);     
         })
 
         head.append(title)
@@ -282,207 +323,231 @@ registerPet()
 
 
 const renderPetList = async () => {
-    const main = document.querySelector('.profile-main')
     const petList = await readAllMyPets()
+    const main = document.querySelector('.profile-main')
     const fullUl = document.querySelector('#ulFull')
-    petList.forEach(pet => {
-        const li = document.createElement('li')
-        li.classList = 'card-full flex'
-
-        const liContainerImg = document.createElement('div')
-        liContainerImg.classList = 'card-img-container'
-        
-
-        const liImg = document.createElement('img')
-        liImg.classList = 'pet-img'
-        liImg.src = pet.avatar_url
-
-        const liDescription= document.createElement('div')
-        liDescription.classList = 'card-description flex flex-col'
-
-        const liName = document.createElement('p')
-        liName.classList = 'data-paragraph'
-        liName.innerText = `Nome: ${pet.name}`
-
-        const liBread = document.createElement('p')
-        liBread.classList = 'data-paragraph'
-        liBread.innerText = `Raça: ${pet.bread}`
-
-        const liSpecies = document.createElement('p')
-        liSpecies.classList = 'data-paragraph'
-        liSpecies.innerText = `Espécie: ${pet.species}`
-
-        const buttonEdit = document.createElement('button')
-        buttonEdit.classList = 'button-purple adopt-button pointer'
-        buttonEdit.innerText = 'Atualizar'
-
-        const buttonAdopt = document.createElement('button')
-        buttonAdopt.classList = 'button-red-delete adopt-button pointer'
-        buttonAdopt.innerText = 'Deletar pet'
-
-        const liAdoptable = document.createElement('p')
-        liAdoptable.classList = 'data-paragraph'
-
-        if(pet.available_for_adoption == true){
-            liAdoptable.innerText = 'Adotável: Sim'
-        }else{
-            liAdoptable.innerText = 'Adotável: Não'
-        }
-
-        buttonEdit.addEventListener('click', ()=>{
-            const wrapper = document.createElement('div')
-            wrapper.classList = 'modal-wrapper'
+    if(petList != ""){
+        petList.forEach(pet => {
+            const li = document.createElement('li')
+            li.classList = 'card-full flex animation-card'
     
-            const container = document.createElement('div')
-            container.classList = 'modal-container'
-    
-            const backgroundColorOne = document.createElement('div')
-            backgroundColorOne.classList = 'modal-background'
-    
-            const closeButton = document.createElement('button')
-            closeButton.classList = 'modal-close'
-            closeButton.innerText = 'X'
-       
-            const content = document.createElement('div')
-            content.classList = 'modal-content'
-    
-            const head = document.createElement('div')
-            head.classList = 'modal-header'
-    
-            const title = document.createElement('h2')
-            title.classList = 'modal-title'
-            title.innerText = 'Atualizar pet'
-    
-            const form = document.createElement('form')
-            form.classList = 'modal-form'
-    
-            const inputOne = document.createElement('input')
-            inputOne.classList = 'modal-input'
-            inputOne.value = pet.name
-            inputOne.id = 'name'
-    
-            const inputTwo = document.createElement('input')
-            inputTwo.classList = 'modal-input'
-            inputTwo.value = pet.bread
-            inputTwo.id = 'bread'
-    
-            const inputThree = document.createElement('input')
-            inputThree.classList = 'modal-input'
-            inputThree.value = pet.species
-            inputThree.id = 'species'
-    
-            const inputFour = document.createElement('input')
-            inputFour.classList = 'modal-input'
-            inputFour.value = pet.avatar_url
-            inputFour.id = 'avatar_url'
+            const liContainerImg = document.createElement('div')
+            liContainerImg.classList = 'card-img-container'
             
-            const formButton = document.createElement('button')
-            formButton.classList = 'pointer button-purple modal-button'
-            formButton.innerText = 'Atualizar'
     
-            const backgroundColorTwo = document.createElement('div') 
-            backgroundColorTwo.classList = 'modal-background'
-            backgroundColorTwo.id = 'backgroundTwo'
+            const liImg = document.createElement('img')
+            liImg.classList = 'pet-img'
+            liImg.src = pet.avatar_url
     
+            const liDescription= document.createElement('div')
+            liDescription.classList = 'card-description flex flex-col'
     
-            closeButton.addEventListener('click', ()=>{
-                wrapper.remove()
-            })
+            const liName = document.createElement('p')
+            liName.classList = 'data-paragraph'
+            liName.innerText = `Nome: ${pet.name}`
     
-            form.addEventListener('submit', async(event)=>{
-                event.preventDefault()
-                fullUl.innerHTML = ''
-                const elements = [...form.elements]
-                const body = {}
-                elements.forEach(elt =>{
-                    if(elt.tagName == "INPUT"){
-                        body[elt.id] = elt.value
-                    }
-                })
-                await updatePetById(body, pet.id)
-                await renderPetList()
-                wrapper.remove()
-            })
-
-            head.append(title)
-            form.append(inputOne, inputTwo, inputThree, inputFour, formButton)
-            content.append(head, form)
-            backgroundColorOne.append(closeButton)
-            container.append(backgroundColorOne, content, backgroundColorTwo)
-            wrapper.append(container)
-            main.append(wrapper)
-        })
-
-        buttonAdopt.addEventListener('click', ()=>{
-            const wrapper = document.createElement('div')
-            wrapper.classList = 'modal-wrapper'
+            const liBread = document.createElement('p')
+            liBread.classList = 'data-paragraph'
+            liBread.innerText = `Raça: ${pet.bread}`
     
-            const container = document.createElement('div')
-            container.classList = 'modal-container'
+            const liSpecies = document.createElement('p')
+            liSpecies.classList = 'data-paragraph'
+            liSpecies.innerText = `Espécie: ${pet.species}`
     
-            const backgroundColorOne = document.createElement('div')
-            backgroundColorOne.classList = 'modal-background'
+            const buttonEdit = document.createElement('button')
+            buttonEdit.classList = 'button-purple pet-card-profile-button-edit pointer'
+            buttonEdit.innerText = 'Atualizar'
     
-            const closeButton = document.createElement('button')
-            closeButton.classList = 'modal-close'
-            closeButton.innerText = 'X'
-       
-            const content = document.createElement('div')
-            content.classList = 'modal-content'
+            const buttonAdopt = document.createElement('button')
+            buttonAdopt.classList = 'button-red-delete pet-card-profile-button-delete pointer'
+            buttonAdopt.innerText = 'Deletar'
     
-            const head = document.createElement('div')
-            head.classList = 'modal-header'
+            const liAdoptable = document.createElement('p')
+            liAdoptable.classList = 'data-paragraph'
     
-            const title = document.createElement('h2')
-            title.classList = 'modal-title'
-            title.innerText = 'Deseja mesmo deletar sua conta?'
+            if(pet.available_for_adoption == true){
+                liAdoptable.innerText = 'Adotável: Sim'
+            }else{
+                liAdoptable.innerText = 'Adotável: Não'
+            }
     
-            const divButtons = document.createElement('div')
-            divButtons.classList = 'modal-div-buttons'
-    
-            const buttonCancel = document.createElement('button')
-            buttonCancel.classList = 'pointer button-purple modal-button'
-            buttonCancel.innerText = 'Não desejo deletar meu pet'
-    
-            const buttonConfirm = document.createElement('button')
-            buttonConfirm.classList = 'pointer button-red-delete modal-button'
-            buttonConfirm.innerText = 'Quero deletar meu pet'
-    
-            const backgroundColorTwo = document.createElement('div') 
-            backgroundColorTwo.classList = 'modal-background'
-            backgroundColorTwo.id = 'backgroundTwo'
-    
-    
-            closeButton.addEventListener('click', ()=>{
-                wrapper.remove()
-            })
-    
-            buttonCancel.addEventListener('click', ()=>{
-                wrapper.remove()
-            })
-    
-            buttonConfirm.addEventListener('click', async (event)=>{
-                event.preventDefault()
-                await deletePetById(pet.id)
-                fullUl.innerHTML = ''
-                renderPetList()
-                wrapper.remove()
-            })
-    
-            head.append(title) 
-            divButtons.append(buttonCancel, buttonConfirm)
-            content.append(head, divButtons)
-            backgroundColorOne.append(closeButton)
-            container.append(backgroundColorOne, content, backgroundColorTwo)
-            wrapper.append(container)
-            main.append(wrapper)
-        })
+            buttonEdit.addEventListener('click', ()=>{
+                const wrapper = document.createElement('div')
+                wrapper.classList = 'modal-wrapper'
         
-        liDescription.append(liName, liBread, liSpecies, liAdoptable, buttonEdit, buttonAdopt)
-        liContainerImg.append(liImg)
-        li.append(liContainerImg, liDescription)
+                const container = document.createElement('div')
+                container.classList = 'modal-container animation-popup'
+        
+                const backgroundColorOne = document.createElement('div')
+                backgroundColorOne.classList = 'modal-background'
+        
+                const closeButton = document.createElement('button')
+                closeButton.classList = 'modal-close'
+                closeButton.innerText = 'X'
+           
+                const content = document.createElement('div')
+                content.classList = 'modal-content'
+        
+                const head = document.createElement('div')
+                head.classList = 'modal-header'
+        
+                const title = document.createElement('h2')
+                title.classList = 'modal-title'
+                title.innerText = 'Atualizar pet'
+        
+                const form = document.createElement('form')
+                form.classList = 'modal-form'
+        
+                const inputOne = document.createElement('input')
+                inputOne.classList = 'modal-input'
+                inputOne.value = pet.name
+                inputOne.id = 'name'
+        
+                const inputTwo = document.createElement('input')
+                inputTwo.classList = 'modal-input'
+                inputTwo.value = pet.bread
+                inputTwo.id = 'bread'
+        
+                const inputThree = document.createElement('input')
+                inputThree.classList = 'modal-input'
+                inputThree.value = pet.species
+                inputThree.id = 'species'
+        
+                const inputFour = document.createElement('input')
+                inputFour.classList = 'modal-input'
+                inputFour.value = pet.avatar_url
+                inputFour.id = 'avatar_url'
+                
+                const formButton = document.createElement('button')
+                formButton.classList = 'pointer button-purple modal-button'
+                formButton.innerText = 'Atualizar'
+        
+                const backgroundColorTwo = document.createElement('div') 
+                backgroundColorTwo.classList = 'modal-background'
+                backgroundColorTwo.id = 'backgroundTwo'
+        
+        
+                closeButton.addEventListener('click', ()=>{
+                    container.classList.add('animation-close-modal')
+                    setTimeout(() => {
+                        wrapper.remove()
+                    }, 400);        
+                })
+        
+                form.addEventListener('submit', async(event)=>{
+                    event.preventDefault()
+                    fullUl.innerHTML = ''
+                    const elements = [...form.elements]
+                    const body = {}
+                    elements.forEach(elt =>{
+                        if(elt.tagName == "INPUT"){
+                            body[elt.id] = elt.value
+                        }
+                    })
+                    await updatePetById(body, pet.id)
+                    renderPetList()
+                    container.classList.add('animation-close-modal')
+                    setTimeout(() => {
+                        wrapper.remove()
+                    }, 400);     
+                })
+    
+                head.append(title)
+                form.append(inputOne, inputTwo, inputThree, inputFour, formButton)
+                content.append(head, form)
+                backgroundColorOne.append(closeButton)
+                container.append(backgroundColorOne, content, backgroundColorTwo)
+                wrapper.append(container)
+                main.append(wrapper)
+            })
+    
+            buttonAdopt.addEventListener('click', ()=>{
+                const wrapper = document.createElement('div')
+                wrapper.classList = 'modal-wrapper'
+        
+                const container = document.createElement('div')
+                container.classList = 'modal-container animation-popup'
+        
+                const backgroundColorOne = document.createElement('div')
+                backgroundColorOne.classList = 'modal-background'
+        
+                const closeButton = document.createElement('button')
+                closeButton.classList = 'modal-close'
+                closeButton.innerText = 'X'
+           
+                const content = document.createElement('div')
+                content.classList = 'modal-content'
+        
+                const head = document.createElement('div')
+                head.classList = 'modal-header'
+        
+                const title = document.createElement('h2')
+                title.classList = 'modal-title'
+                title.innerText = 'Deseja mesmo deletar sua conta?'
+        
+                const divButtons = document.createElement('div')
+                divButtons.classList = 'modal-div-buttons'
+        
+                const buttonCancel = document.createElement('button')
+                buttonCancel.classList = 'pointer button-purple modal-button'
+                buttonCancel.innerText = 'Não desejo deletar meu pet'
+        
+                const buttonConfirm = document.createElement('button')
+                buttonConfirm.classList = 'pointer button-red-delete modal-button-2'
+                buttonConfirm.innerText = 'Quero deletar meu pet'
+        
+                const backgroundColorTwo = document.createElement('div') 
+                backgroundColorTwo.classList = 'modal-background'
+                backgroundColorTwo.id = 'backgroundTwo'
+        
+        
+                closeButton.addEventListener('click', ()=>{
+                    wrapper.remove()
+                })
+        
+                buttonCancel.addEventListener('click', ()=>{
+                    wrapper.remove()
+                })
+        
+                buttonConfirm.addEventListener('click', async ()=>{
+                    fullUl.innerHTML = ''
+                    await deletePetById(pet.id) 
+                    renderPetList()
+                    container.classList.add('animation-close-modal')
+                    setTimeout(() => {
+                        wrapper.remove()
+                    }, 400);     
+                })
+        
+                head.append(title) 
+                divButtons.append(buttonCancel, buttonConfirm)
+                content.append(head, divButtons)
+                backgroundColorOne.append(closeButton)
+                container.append(backgroundColorOne, content, backgroundColorTwo)
+                wrapper.append(container)
+                main.append(wrapper)
+            })
+            
+            liDescription.append(liName, liBread, liSpecies, liAdoptable, buttonEdit, buttonAdopt)
+            liContainerImg.append(liImg)
+            li.append(liContainerImg, liDescription)
+            fullUl.append(li)
+        })
+    }else{
+        const li = document.createElement('li')
+        li.classList = 'empty-list flex flex-col al-center animation-card'
+
+        const title = document.createElement('h2')
+        title.classList = 'empty-list-item'
+        title.innerText = 'Você ainda não tem pets registrados'
+
+        const img = document.createElement('img')
+        img.classList = 'dogIcon'
+        img.src = '../imgs/sadDogIcon.png'
+
+        li.append(title, img)
         fullUl.append(li)
-    })
+    }
 }
 
 renderPetList()
