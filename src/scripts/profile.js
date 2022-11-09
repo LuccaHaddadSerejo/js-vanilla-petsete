@@ -1,5 +1,5 @@
 import { getLocalStorage } from "./localStorage.js"
-import { createPet, deletePetById, deleteProfile, readAllMyPets, readProfile, updatePetById, updateProfile } from "./requests.js"
+import { createPet, deletePetById, deleteProfile, readAllMyPets, readProfile, updatePetById, updateProfile, readAllPets } from "./requests.js"
 
 const verifyPermission = () => {
     const user = getLocalStorage()
@@ -216,12 +216,14 @@ const editUserData = async () => {
 
 editUserData()
 
-const registerPet = () => {
+const registerPet = async() => {
     const main = document.querySelector('.profile-main')
     const registerButton = document.querySelector('#newPetButton')
     const fullUl = document.querySelector('#ulFull')
+    const list = await readAllPets()
 
     registerButton.addEventListener('click', ()=>{
+        const speciesList  = [...new Set (list.map(elt => elt.species))]
         const wrapper = document.createElement('div')
         wrapper.classList = 'modal-wrapper'
 
@@ -259,9 +261,21 @@ const registerPet = () => {
         inputTwo.placeholder = 'Raça'
         inputTwo.id = 'bread'
 
-        const inputThree = document.createElement('input')
-        inputThree.classList = 'modal-input'
-        inputThree.placeholder = 'Espécie'
+        const inputThree = document.createElement('select')
+        inputThree.classList = 'modal-select'
+        const optionFixed = document.createElement('option')
+        optionFixed.innerText = 'Espécie'
+        optionFixed.hidden = true
+        optionFixed.classList = 'modal-select'
+
+        inputThree.append(optionFixed)
+        speciesList.forEach(species => {
+            const option = document.createElement('option')
+            option.classList = 'modal-select'
+            option.value = species
+            option.innerText = species
+            inputThree.append(option)
+        })
         inputThree.id = 'species'
 
         const inputFour = document.createElement('input')
@@ -293,6 +307,8 @@ const registerPet = () => {
             elements.forEach(elt =>{
                 if(elt.tagName == "INPUT"){
                     body[elt.id] = elt.value
+                }else if(elt.tagName == "SELECT"){
+                    body['species'] = elt.value
                 }
             })   
             await createPet(body)
