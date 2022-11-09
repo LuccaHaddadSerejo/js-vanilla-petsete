@@ -47,6 +47,12 @@
     font-weight: 600;
 }
 
+.button-white-red:hover {
+    color: var(--color-secondary);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-red);
+}
+
 .button-green{
     padding: 4px 24px;
     border-radius: var(--radius-16);
