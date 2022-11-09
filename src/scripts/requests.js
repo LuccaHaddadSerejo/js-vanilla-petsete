@@ -46,6 +46,7 @@ const createUser = async (body) => {
             body: JSON.stringify(body)
         })
         const res = await request.json()
+        console.log(res)
         if (request.ok) {
             toast("Sucesso!", "Cadastro feito com sucesso.")
             setTimeout(() => {
@@ -63,6 +64,10 @@ const createUser = async (body) => {
 
 const readAll = async () => {
     const token = getLocalStorage()
+    const ul = document.querySelector('#card_list')
+    const img = document.createElement('img')
+    img.src = './src/imgs/catgit.gif'
+    ul.appendChild(img)
     try {
         const request = await fetch(baseUrl + '/users', {
             method: "GET",

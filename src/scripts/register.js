@@ -6,8 +6,9 @@ const eventRegister = async () => {
     const inputPassword = document.querySelector("#password");
     const inputAvatar = document.querySelector("#avatar");
     const registerButton = document.querySelector("#registerButton");
+    const form = document.querySelector(".form-register")
 
-    registerButton.addEventListener("click", async (e) => {
+    form.addEventListener("submit", async (e) => {
         e.preventDefault();
         const body = {
             name: inputUsername.value,
@@ -15,6 +16,7 @@ const eventRegister = async () => {
             password: inputPassword.value,
             avatar_url: inputAvatar.value
         }
+        console.log(body)
         await createUser(body)
     })
 }

@@ -1,0 +1,38 @@
+.teamList {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.cardTeam {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: var(--radius-16);
+    border: 3px solid var(--color-main);
+    gap: 10px;
+}
+
+.teamCardImg {
+    border-radius: 100%;
+    border: 2px solid var(--color-secondary);
+    object-fit: cover;
+    height: 100px;
+}
+
+.teamCardTitle {
+    font-size: var(--text-3);
+    font-weight: var(--weigth-2);
+    color: var(--color-main);
+}
+
+.teamCardFooter {
+    display: flex;
+    gap: 20px;
+}
+
+.teamCardButton img{
+    height: 30px;
+}
