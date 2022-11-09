@@ -46,6 +46,7 @@ const createUser = async (body) => {
             body: JSON.stringify(body)
         })
         const res = await request.json()
+        console.log(res)
         if (request.ok) {
             toast("Sucesso!", "Cadastro feito com sucesso.")
             setTimeout(() => {
