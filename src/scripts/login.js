@@ -33,4 +33,4 @@ function getValues(formElements) {
     return object
 }
 
-
+export{verificLogin}
