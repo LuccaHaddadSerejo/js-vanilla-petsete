@@ -15,3 +15,9 @@ footer > p{
    font-size: var(--text-4);
    color: var(--color-main);
 }
+
+footer > p > a {
+   font-weight: var(--weigth-3);
+   font-size: var(--text-4);
+   color: var(--color-main);
+}
