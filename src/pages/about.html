@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../styles/toast.css">
     <link rel="stylesheet" href="../styles/about.css">
     <link rel="icon" type="image/x-icon" href="../imgs/FaviconPetSete.png">
-    <title>PetSete - Home</title>
+    <title>PetSete - AboutUs</title>
 </head>
 <body>
     <header class="flex al-center jus-center">
@@ -29,49 +29,50 @@
             </div>
         </div>
     </header>
-    <main class="flex flex-col al-center">
+    <main class="aboutMain flex flex-col al-center">
+        <div class="background flex al-center jus-center">
+            <div class="title-box flex al-center jus-center">
+                <h2 class="section-title">Nosso time</h2>
+            </div> 
+        </div>
         <div class="container flex flex-col al-center jus-center">
-            <div class="select-box flex flex-col al-center jus-between">
-                <h2>Nosso time</h2>
-                <select name="espécies" id="select_home"></select>
-            </div>
-            <ul class="teamList">
-                <li class="cardTeam">
-                    <img class="teamCardImg" src="../imgs/fernandaimg.png" alt="fotoFernanda">
-                    <p class="teamCardTitle">Fernanda</p>
-                    <div class="teamCardFooter">
-                        <a class="teamCardButton" href="" ><img src="../imgs/logoLink.png" alt="logoLinkedin"></a>
-                        <a class="teamCardButton" href=""><img src="../imgs/logoGit.png" alt="LogoGit"></a>
+            <ul class="team-list flex wrap al-center jus-center">
+                <li class="card-team flex flex-col al-center jus-center">
+                    <img class="team-card-img" src="../imgs/fernandaimg.png" alt="fotoFernanda">
+                    <p class="team-card-title">Fernanda</p>
+                    <div class="team-card-footer">
+                        <a class="pointer team-card-button" href="https://www.linkedin.com/in/fernanda-manfrini-0a783794/" target="_blank" ><img src="../imgs/logoLink.png" alt="logoLinkedin"></a>
+                        <a class="pointer team-card-button" href="https://github.com/Fermanfrini" target="_blank"><img src="../imgs/logoGit.png" alt="LogoGit"></a>
                     </div>
                 </li>
-                <li class="cardTeam">
-                    <img class="teamCardImg" src="../imgs/luccaimg.png" alt="fotoFernanda">
-                    <p class="teamCardTitle">Lucca</p>
-                    <div class="teamCardFooter">
-                        <a class="teamCardButton" href="" ><img src="../imgs/logoLink.png" alt="logoLinkedin"></a>
-                        <a class="teamCardButton" href=""><img src="../imgs/logoGit.png" alt="LogoGit"></a>
+                <li class="card-team flex flex-col al-center jus-center">
+                    <img class="team-card-img" src="../imgs/luccaimg.png" alt="fotoFernanda">
+                    <p class="team-card-title">Lucca</p>
+                    <div class="team-card-footer">
+                        <a class="pointer team-card-button" href="https://www.linkedin.com/in/lucca-haddad-serejo-9961aa23a" target="_blank"><img src="../imgs/logoLink.png" alt="logoLinkedin"></a>
+                        <a class="pointer team-card-button" href="https://github.com/LuccaHaddadSerejo" target="_blank"><img src="../imgs/logoGit.png" alt="LogoGit"></a>
                     </div>
                 </li>
-                <li class="cardTeam">
-                    <img class="teamCardImg" src="../imgs/lucasimg.png" alt="fotoFernanda">
-                    <p class="teamCardTitle">Lucas</p>
-                    <div class="teamCardFooter">
-                        <a class="teamCardButton" href="" ><img src="../imgs/logoLink.png" alt="logoLinkedin"></a>
-                        <a class="teamCardButton" href=""><img src="../imgs/logoGit.png" alt="LogoGit"></a>
+                <li class="card-team flex flex-col al-center jus-center">
+                    <img class="team-card-img" src="../imgs/lucasimg.png" alt="fotoFernanda">
+                    <p class="team-card-title">Lucas</p>
+                    <div class="team-card-footer">
+                        <a class="pointer team-card-button" href="https://www.linkedin.com/in/lucas-rodrigues-da-silva-168274201/" target="_blank"><img src="../imgs/logoLink.png" alt="logoLinkedin"></a>
+                        <a class="pointer team-card-button" href="https://github.com/LucasRodrigues23" target="_blank"><img src="../imgs/logoGit.png" alt="LogoGit"></a>
                     </div>
                 </li>
-                <li class="cardTeam">
-                    <img class="teamCardImg" src="../imgs/olivioimg.png" alt="fotoFernanda">
-                    <p class="teamCardTitle">Olívio</p>
-                    <div class="teamCardFooter">
-                        <a class="teamCardButton" href="" ><img src="../imgs/logoLink.png" alt="logoLinkedin"></a>
-                        <a class="teamCardButton" href=""><img src="../imgs/logoGit.png" alt="LogoGit"></a>
+                <li class="card-team flex flex-col al-center jus-center">
+                    <img class="team-card-img" src="../imgs/olivioimg.png" alt="fotoFernanda">
+                    <p class="team-card-title">Olívio</p>
+                    <div class="team-card-footer">
+                        <a class="pointer team-card-button" href="https://www.linkedin.com/in/oliviofreitas/" target="_blank"><img src="../imgs/logoLink.png" alt="logoLinkedin"></a>
+                        <a class="pointer team-card-button" href="https://github.com/freitassneto" target="_blank"><img src="../imgs/logoGit.png" alt="LogoGit"></a>
                     </div>
                 </li>
             </ul>
         </div>
     </main>
-    <footer class='flex al-center jus-center'>
+    <footer class='footer-about flex al-center jus-center'>
         <p>PetSete | Todos os direitos reservados</p>
     </footer>
     <script type="module" src="../scripts/about.js"></script>
