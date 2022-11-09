@@ -102,7 +102,12 @@ const updateProfile = async (body) => {
             body: JSON.stringify(body)
         })
         const res = await request.json()
-        return res
+        if(request.ok){    
+            toast("Sucesso!","Perfil atualizado com sucesso") 
+            return res      
+        }else{
+            toast('Erro!', 'Tente novamente')
+        }
     } catch (error) {
         console.log(error);
     }
@@ -138,7 +143,12 @@ const createPet = async (body) => {
             body: JSON.stringify(body)
         })
         const res = await request.json()
-        return res
+        if(request.ok){    
+            toast("Sucesso!","Novo pet criado com sucesso") 
+            return res      
+        }else{
+            toast('Erro!', 'Tente novamente')
+        }
     } catch (error) {
         console.log(error);
     }
@@ -190,7 +200,12 @@ const updatePetById = async (body, petId) => {
             body: JSON.stringify(body)
         })
         const res = await request.json()
-        return res
+        if(request.ok){    
+            toast("Sucesso!","Pet atualizado com sucesso") 
+            return res      
+        }else{
+            toast('Erro!', 'Tente novamente')
+        }
     } catch (error) {
         console.log(error);
     }
@@ -208,7 +223,12 @@ const deletePetById = async (petId) => {
 
         })
         const res = await request.json()
-        return res
+        if(request.ok){    
+            toast("Sucesso!","Pet deletado com sucesso") 
+            return res      
+        }else{
+            toast('Erro!', 'Tente novamente')
+        }
     } catch (error) {
         console.log(error);
     }
