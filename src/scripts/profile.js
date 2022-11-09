@@ -334,8 +334,10 @@ registerPet()
 
 const renderPetList = async () => {
     const petList = await readAllMyPets()
+    const list = await readAllPets()
     const main = document.querySelector('.profile-main')
     const fullUl = document.querySelector('#ulFull')
+    const speciesList  = [...new Set (list.map(elt => elt.species))]
     if(petList != ""){
         petList.forEach(pet => {
             const li = document.createElement('li')
@@ -422,9 +424,21 @@ const renderPetList = async () => {
                 inputTwo.value = pet.bread
                 inputTwo.id = 'bread'
         
-                const inputThree = document.createElement('input')
-                inputThree.classList = 'modal-input'
-                inputThree.value = pet.species
+                const inputThree = document.createElement('select')
+                inputThree.classList = 'modal-select'
+                const optionFixed = document.createElement('option')
+                optionFixed.innerText = 'Espécie'
+                optionFixed.hidden = true
+                optionFixed.classList = 'modal-select'
+
+                inputThree.append(optionFixed)
+                speciesList.forEach(species => {
+                    const option = document.createElement('option')
+                    option.classList = 'modal-select'
+                    option.value = species
+                    option.innerText = species
+                    inputThree.append(option)
+                })
                 inputThree.id = 'species'
         
                 const inputFour = document.createElement('input')
@@ -456,6 +470,8 @@ const renderPetList = async () => {
                     elements.forEach(elt =>{
                         if(elt.tagName == "INPUT"){
                             body[elt.id] = elt.value
+                        }else if(elt.tagName == "SELECT"){
+                            body['species'] = elt.value
                         }
                     })
                     await updatePetById(body, pet.id)
