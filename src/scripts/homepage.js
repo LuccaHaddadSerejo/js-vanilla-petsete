@@ -192,7 +192,7 @@ const modalAdopt = async (id, name, bread, species, avatar_url, guardian) => {
 
 const specieSelector = async () => {
     const list = await readAllPets()
-    const speciesList  = [...new Set (list.map(elt => elt.species))]
+    const speciesList  = [...new Set (list.map(elt => elt.species))].sort()
     
     const select = document.querySelector('#select_home')
     const option = document.createElement('option')

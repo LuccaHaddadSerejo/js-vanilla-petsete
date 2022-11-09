@@ -223,7 +223,7 @@ const registerPet = async() => {
     const list = await readAllPets()
 
     registerButton.addEventListener('click', ()=>{
-        const speciesList  = [...new Set (list.map(elt => elt.species))]
+        const speciesList  = [...new Set (list.map(elt => elt.species))].sort()
         const wrapper = document.createElement('div')
         wrapper.classList = 'modal-wrapper'
 
@@ -337,7 +337,7 @@ const renderPetList = async () => {
     const list = await readAllPets()
     const main = document.querySelector('.profile-main')
     const fullUl = document.querySelector('#ulFull')
-    const speciesList  = [...new Set (list.map(elt => elt.species))]
+    const speciesList  = [...new Set (list.map(elt => elt.species))].sort()
     if(petList != ""){
         petList.forEach(pet => {
             const li = document.createElement('li')
