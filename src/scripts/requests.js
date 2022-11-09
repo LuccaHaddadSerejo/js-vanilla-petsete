@@ -13,7 +13,6 @@ const login = async (body) => {
             body: JSON.stringify(body)
         })
         const res = await request.json()
-        console.log(res)
         if (res.token) {
             setLocalStorage(res)
             toast("Sucesso!", "Login feito com sucesso")

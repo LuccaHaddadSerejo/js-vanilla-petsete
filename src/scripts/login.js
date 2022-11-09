@@ -4,7 +4,7 @@ function eventLogin(){
 const form = document.querySelector("#form")
 const spreadForm = [...form]
 const buutonLogin= document.querySelector('#login-button')
-buutonLogin.addEventListener("click", async(event)=>{
+form.addEventListener("submit", async(event)=>{
     event.preventDefault()
     const object = getValues(spreadForm)
     login(object)
