@@ -65,6 +65,12 @@
     max-width: 180px;
 }
 
+.button-green:hover{
+    background-color: var(--color-white);
+    color: var(--color-main);
+    transition: ease 0.4s;
+}
+
 .button-red-delete{
     padding: 4px 24px;
     border-radius: var(--radius-16);
@@ -73,6 +79,12 @@
     border: 1px solid var(--color-main);
     font-size: var(--text-4);
     font-weight: var(--weigth-2);
+}
+
+.button-red-delete:hover{
+    background-color: var(--color-main);
+    color: var(--color-white);
+    transition: ease 0.4s;
 }
 
 
@@ -100,8 +112,8 @@
 }
 .inputs-login::-webkit-input-placeholder{
     color: var(--color-black);
-    font-size: var(--text-4);
-   
+    font-size: var(--text-3);
+
 }
 
 .inputs-login:hover{

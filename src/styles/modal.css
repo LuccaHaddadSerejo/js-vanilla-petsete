@@ -96,12 +96,6 @@
     border-radius: var(--radius-4);
 }
 
-.modal-button:hover{
-    background-color: var(--color-main);
-    transition: ease 0.4s;
-}
-
-
 @keyframes animationModal{
     0% {
         transform: translateY(20px);
