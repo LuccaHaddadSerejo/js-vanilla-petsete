@@ -1,5 +1,4 @@
 import { createUser } from "./requests.js"
-import{getLocalStorage} from "./localStorage.js"
 import{verificLogin} from "./login.js"
 
 verificLogin()
