@@ -19,13 +19,11 @@ const changeButtonsHeader = () => {
   if (token.token) {
     button.innerText = 'Perfil'
     button.addEventListener('click', (e) => {
-        e.preventDefault()
         window.location.replace('./src/pages/profile.html')
     })
   } else {
     button.innerText = 'Register'
     button.addEventListener('click', (e) => {
-        e.preventDefault()
         window.location.replace('./src/pages/register.html')
     })
   }
@@ -60,7 +58,7 @@ const renderCardsHome = async (species) => {
     cardList.append(loading)
     let list = await readAllPets()
     if (species != 'Espécies') {
-        list = list.filter(element => element.species === species && element.available_for_adoption === true)
+        list = list.filter(element => element.species === species)
     }
 
     if (list.length <= 0) {
@@ -79,7 +77,6 @@ const renderCardsHome = async (species) => {
             }
         }); 
     }
-    
 
 }
 
@@ -87,7 +84,7 @@ renderCardsHome('Espécies')
 
 const cardCreatorHome = async (element) => {
     const token = getLocalStorage()
-    const {id, name, bread, species, available_for_adoption, avatar_url, guardian} = element
+    const {id, name, bread, species, avatar_url, guardian} = element
     
         const card = document.createElement('li')
         card.classList = 'card-home flex flex-col'
