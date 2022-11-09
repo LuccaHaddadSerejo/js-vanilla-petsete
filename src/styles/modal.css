@@ -14,7 +14,7 @@
     max-width: 506px;
     background-color: white;
     margin: 0 auto;
-    top: 35%;
+    top: 25%;
     border-radius: var(--radius-16);
 }
 
@@ -88,19 +88,13 @@
 
 .modal-button{
     height: 40px;
-    border-radius: var(--radius-4);
+    border-radius: var(--radius-16);
 }
 
 .modal-button-2{
     height: 40px;
-    border-radius: var(--radius-4);
+    border-radius: var(--radius-16);
 }
-
-.modal-button:hover{
-    background-color: var(--color-main);
-    transition: ease 0.4s;
-}
-
 
 @keyframes animationModal{
     0% {
