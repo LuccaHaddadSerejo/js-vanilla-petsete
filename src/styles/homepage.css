@@ -52,7 +52,6 @@
 }
 
 .select-box > select {
-    -webkit-appearance: none;
     padding: 5px 35px;
     border: 1px solid var(--color-secondary);
     border-radius: var(--radius-16);
