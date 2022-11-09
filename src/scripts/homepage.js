@@ -66,8 +66,10 @@ const renderCardsHome = async (species) => {
     if (list.length <= 0) {
         cardList.innerHTML = ''
         cardList.insertAdjacentHTML('beforeend', `
+        <div class="flex flex-col jus-center al-center">
         <p>infelizmente não temos nenhum pet desta espécie disponivel</p> 
         <img class="cardlist-img2" src="./src/imgs/sadDogIcon.png" alt=""></img>
+        </div>
         `)
     } else {
         cardList.innerHTML = ''
@@ -79,7 +81,6 @@ const renderCardsHome = async (species) => {
             }
         }); 
     }
-    
 
 }
 
