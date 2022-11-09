@@ -1,4 +1,4 @@
- * {
+* {
     scrollbar-width: none;
     scrollbar-color: var(--color-secondary) #ffffff;
   }
@@ -60,7 +60,7 @@
 
 .card-list-home {
     width: 100%;
-    height: 500px;
+    height: 300px;
     margin-top: 50px;
     overflow: auto;
 }
@@ -137,5 +137,8 @@ footer {
     }
     .modal-content1{
         flex-direction: row;
+    }
+    .card-list-home {
+        height: 500px;
     }
 }
