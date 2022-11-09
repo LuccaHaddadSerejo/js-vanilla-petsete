@@ -60,7 +60,10 @@ const renderCardsHome = async (species) => {
     }
 
     if (list.length <= 0) {
-        cardList.insertAdjacentHTML('beforeend', "<p>infelizmente não temos nenhum pet desta espécie disponivel</p>")
+        cardList.insertAdjacentHTML('beforeend', `
+        <p>infelizmente não temos nenhum pet desta espécie disponivel</p> 
+        <img src="./src/imgs/sadDogIcon.png" alt=""></img>
+        `)
     } else {
         list.forEach(async (element) => {
             const { available_for_adoption } = element
@@ -121,8 +124,8 @@ const modalAdopt = async (id, name, bread, species, avatar_url, guardian) => {
     divBgOne.classList = 'modal-background'
 
     const divBgTwo = document.createElement('div')
-    divBgOne.classList = 'modal-background'
-    divBgTwo.id = 'backgroundTwo1'
+    divBgTwo.classList = 'modal-background'
+    divBgTwo.id = 'backgroundTwo'
 
     const closeModalButton = document.createElement('button')
     closeModalButton.classList = 'modal-close'
@@ -130,7 +133,7 @@ const modalAdopt = async (id, name, bread, species, avatar_url, guardian) => {
 
     modalBackground.addEventListener('click', async (e) => {
         const {className} = e.target
-        if (className === 'modal-wrapper' || className === 'modal-closel') {
+        if (className === 'modal-wrapper' || className === 'modal-close') {
             modalBackground.remove()
         }
     })
@@ -148,8 +151,8 @@ const modalAdopt = async (id, name, bread, species, avatar_url, guardian) => {
     divInfo.classList = 'info-modal-adoption flex flex-col gap18'
 
     divInfo.insertAdjacentHTML('beforeend', `
-        <h2>Nome: ${name}</h2>
-        <p>Raça: ${bread}</p>
+        <h2>Nome: ${bread}</h2>
+        <p>Raça: ${name}</p>
         <p>Espécie: ${species}</p>
         <p>Tutor: ${guardian.name}</p> 
     `)
@@ -170,6 +173,7 @@ const modalAdopt = async (id, name, bread, species, avatar_url, guardian) => {
 
     divInfo.appendChild(buttonAdopt)
     children.append(divImg, divInfo)
+    divBgOne.appendChild(closeModalButton)
     modalBox.append(divBgOne, children, divBgTwo)
     modalBackground.appendChild(modalBox)
     body.appendChild(modalBackground)
