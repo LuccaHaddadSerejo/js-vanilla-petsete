@@ -139,7 +139,7 @@ body{
 
 .pet-card-profile-button-edit{
     margin-top: 10px;
-    max-width: 123px;
+    min-width: 123px;
 }
 
 .pet-card-profile-button-edit:hover{
@@ -149,7 +149,7 @@ body{
 
 .pet-card-profile-button-delete{
     margin-top: 10px;
-    max-width: 123px;
+    min-width: 123px;
 }
 
 .footer-profile{
