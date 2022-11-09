@@ -95,6 +95,9 @@ const cardCreatorHome = async (element) => {
         const avatar = document.createElement('img')
         avatar.src = avatar_url
         avatar.alt = name
+        avatar.addEventListener('error', (e) => {
+            avatar.src = './src/imgs/noimage.png'
+        })
         const petName = document.createElement('p')
         petName.innerText = name.substring(0, 10)
         const specie = document.createElement('span')
