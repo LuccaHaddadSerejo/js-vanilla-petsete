@@ -102,7 +102,7 @@
     padding: 20px;
     width: 80%;
     height: 44px;
-    border-radius: var(--radius-16);
+    border-radius: var(--radius-4);
     outline: none;
     border: var(--border-2) var(--color-main);
     background-color: var(--color-white);
