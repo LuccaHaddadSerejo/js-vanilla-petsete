@@ -19,11 +19,13 @@ const changeButtonsHeader = () => {
   if (token.token) {
     button.innerText = 'Perfil'
     button.addEventListener('click', (e) => {
+        e.preventDefault()
         window.location.replace('./src/pages/profile.html')
     })
   } else {
     button.innerText = 'Register'
     button.addEventListener('click', (e) => {
+        e.preventDefault()
         window.location.replace('./src/pages/register.html')
     })
   }
@@ -58,14 +60,16 @@ const renderCardsHome = async (species) => {
     cardList.append(loading)
     let list = await readAllPets()
     if (species != 'Espécies') {
-        list = list.filter(element => element.species === species)
+        list = list.filter(element => element.species === species && element.available_for_adoption === true)
     }
 
     if (list.length <= 0) {
         cardList.innerHTML = ''
         cardList.insertAdjacentHTML('beforeend', `
+        <div class="flex flex-col jus-center al-center">
         <p>infelizmente não temos nenhum pet desta espécie disponivel</p> 
         <img class="cardlist-img2" src="./src/imgs/sadDogIcon.png" alt=""></img>
+        </div>
         `)
     } else {
         cardList.innerHTML = ''
@@ -84,7 +88,7 @@ renderCardsHome('Espécies')
 
 const cardCreatorHome = async (element) => {
     const token = getLocalStorage()
-    const {id, name, bread, species, avatar_url, guardian} = element
+    const {id, name, bread, species, available_for_adoption, avatar_url, guardian} = element
     
         const card = document.createElement('li')
         card.classList = 'card-home flex flex-col'
