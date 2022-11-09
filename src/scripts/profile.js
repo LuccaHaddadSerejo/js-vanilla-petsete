@@ -347,6 +347,9 @@ const renderPetList = async () => {
             const liSpecies = document.createElement('p')
             liSpecies.classList = 'data-paragraph'
             liSpecies.innerText = `Espécie: ${pet.species}`
+
+            const liDiv = document.createElement('div')
+            liDiv.classList = 'div-buttons-description'
     
             const buttonEdit = document.createElement('button')
             buttonEdit.classList = 'button-purple pet-card-profile-button-edit pointer'
@@ -354,17 +357,18 @@ const renderPetList = async () => {
     
             const buttonAdopt = document.createElement('button')
             buttonAdopt.classList = 'button-red-delete pet-card-profile-button-delete pointer'
-            buttonAdopt.innerText = 'Deletar'
     
             const liAdoptable = document.createElement('p')
             liAdoptable.classList = 'data-paragraph'
     
             if(pet.available_for_adoption == true){
                 liAdoptable.innerText = 'Adotável: Sim'
+                buttonAdopt.innerText = 'Deletar'
             }else{
                 liAdoptable.innerText = 'Adotável: Não'
+                buttonAdopt.innerText = 'Doar'
             }
-    
+
             buttonEdit.addEventListener('click', ()=>{
                 const wrapper = document.createElement('div')
                 wrapper.classList = 'modal-wrapper'
@@ -484,11 +488,11 @@ const renderPetList = async () => {
         
                 const buttonCancel = document.createElement('button')
                 buttonCancel.classList = 'pointer button-purple modal-button'
-                buttonCancel.innerText = 'Não desejo deletar meu pet'
+                buttonCancel.innerText = `Não desejo ${buttonAdopt.innerText.toLowerCase()} meu pet`
         
                 const buttonConfirm = document.createElement('button')
                 buttonConfirm.classList = 'pointer button-red-delete modal-button-2'
-                buttonConfirm.innerText = 'Quero deletar meu pet'
+                buttonConfirm.innerText =  `Quero ${buttonAdopt.innerText.toLowerCase()} meu pet`
         
                 const backgroundColorTwo = document.createElement('div') 
                 backgroundColorTwo.classList = 'modal-background'
@@ -522,7 +526,8 @@ const renderPetList = async () => {
                 main.append(wrapper)
             })
             
-            liDescription.append(liName, liBread, liSpecies, liAdoptable, buttonEdit, buttonAdopt)
+            liDiv.append(buttonEdit, buttonAdopt)
+            liDescription.append(liName, liBread, liSpecies, liAdoptable, liDiv)
             liContainerImg.append(liImg)
             li.append(liContainerImg, liDescription)
             fullUl.append(li)
