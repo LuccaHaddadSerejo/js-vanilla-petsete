@@ -1,4 +1,7 @@
 import { createUser } from "./requests.js"
+import{verificLogin} from "./login.js"
+
+verificLogin()
 
 const eventRegister = async () => {
     const inputUsername = document.querySelector("#username");
