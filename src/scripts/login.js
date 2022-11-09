@@ -1,9 +1,18 @@
 import {login} from "./requests.js"
+import{getLocalStorage} from "./localStorage.js"
+
+
+function verificLogin(){
+    const localStorage = getLocalStorage()
+    if (localStorage.user){
+        window.location.replace('../../index.html')
+    }
+}
+verificLogin()
 
 function eventLogin(){
 const form = document.querySelector("#form")
 const spreadForm = [...form]
-const buutonLogin= document.querySelector('#login-button')
 form.addEventListener("submit", async(event)=>{
     event.preventDefault()
     const object = getValues(spreadForm)
