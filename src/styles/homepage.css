@@ -38,7 +38,7 @@
 }
 
 .container {
-    width: 60%;
+    width: 90%;
 }
 
 .select-box {
@@ -141,11 +141,14 @@ footer {
     padding: 30px;
 }
 
-@media (min-width: 900px){
+@media (min-width: 880px){
     .select-box {
         flex-direction: row;
     }
     .card-list-home {
         height: 500px;
+    }
+    .container {
+        width: 60%;
     }
 }
