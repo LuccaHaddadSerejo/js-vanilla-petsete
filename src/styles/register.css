@@ -120,4 +120,13 @@ button {
     .imgAnimals {
         width: 80%;
     }
+
+    .btn-redirectHome{
+        color: var(--color-main);
+        border: var(--border-2) var(--color-main);
+        padding: 10px;
+        text-decoration: none;
+        margin-top: 5px;
+        border-radius: var(--radius-16);
+    }
 }

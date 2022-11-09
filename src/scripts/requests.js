@@ -1,4 +1,4 @@
-import {toast} from "./toast.js"
+import { toast } from "./toast.js"
 const baseUrl = 'https://m2-api-adot-pet.herokuapp.com'
 
 import { getLocalStorage, setLocalStorage } from "./localStorage.js"
@@ -14,24 +14,24 @@ const login = async (body) => {
         })
         const res = await request.json()
         console.log(res)
-        if(res.token){
+        if (res.token) {
             setLocalStorage(res)
-            toast("Sucesso!","Login feito com sucesso")
+            toast("Sucesso!", "Login feito com sucesso")
             setTimeout(() => {
                 window.location.replace("../../index.html")
             }, 4000);
 
         }
-        
-        else{
-            if(res.message=='Email not found'){
-                toast("Erro!","Este email não existe")
+
+        else {
+            if (res.message == 'Email not found') {
+                toast("Erro!", "Este email não existe")
             }
-            
-            toast("Erro!","Senha ou email inválidos")
-            
+
+            toast("Erro!", "Senha ou email inválidos")
+
         }
-        
+
         return res
 
 
@@ -51,9 +51,14 @@ const createUser = async (body) => {
         })
         const res = await request.json()
         if (request.ok) {
+            toast("Sucesso!", "Cadastro feito com sucesso.")
+            setTimeout(() => {
                 window.location.replace("../pages/login.html")
+            }, 4000);
+        } else {
+            toast("Erro!", "Algo deu errado.")
         }
-        
+
         return res
     } catch (error) {
         console.log(error);
@@ -69,7 +74,7 @@ const readAll = async () => {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token.token}`,
             },
-            
+
         })
         const res = await request.json()
         return res
@@ -87,7 +92,7 @@ const readProfile = async () => {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token.token}`,
             },
-            
+
         })
         const res = await request.json()
         return res
@@ -157,7 +162,7 @@ const readAllPets = async () => {
             headers: {
                 "Content-Type": "application/json",
             },
-            
+
         })
         const res = await request.json()
         return res
@@ -175,7 +180,7 @@ const readAllMyPets = async () => {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token.token}`,
             },
-            
+
         })
         const res = await request.json()
         return res
@@ -248,7 +253,7 @@ const readAllMyAdoptions = async () => {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token.token}`,
             },
-            
+
         })
         const res = await request.json()
         return res
@@ -266,7 +271,7 @@ const readAdoptionById = async (adoptionId) => {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token.token}`,
             },
-            
+
         })
         const res = await request.json()
         return res
@@ -284,7 +289,7 @@ const readmyAdoption = async () => {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token.token}`,
             },
-            
+
         })
         const res = await request.json()
         return res
