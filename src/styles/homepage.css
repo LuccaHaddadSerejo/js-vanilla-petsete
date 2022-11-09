@@ -65,8 +65,7 @@
     margin-top: 50px;
     overflow: auto;
 }
-.card-list-home > p {
-    margin-top: 150px;
+.card-list-home > div > p {
     font-size: var(--text-2);
     font-weight: var(--weigth-2);
     color: var(--color-secondary);
