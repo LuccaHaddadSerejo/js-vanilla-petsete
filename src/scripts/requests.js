@@ -1,4 +1,4 @@
-import {toast} from "./toast.js"
+import { toast } from "./toast.js"
 const baseUrl = 'https://m2-api-adot-pet.herokuapp.com'
 
 import { getLocalStorage, setLocalStorage } from "./localStorage.js"
@@ -14,28 +14,25 @@ const login = async (body) => {
         })
         const res = await request.json()
         console.log(res)
-        if(res.token){
+        if (res.token) {
             setLocalStorage(res)
-            toast("Sucesso!","Login feito com sucesso")
+            toast("Sucesso!", "Login feito com sucesso")
             setTimeout(() => {
                 window.location.replace("../../index.html")
             }, 4000);
 
         }
-        
-        else{
-            if(res.message=='Email not found'){
-                toast("Erro!","Este email não existe")
-            }
-            
-            toast("Erro!","Senha ou email inválidos")
-            
+        else if (res.message == 'Email not found') {
+            toast("Erro!", "Este email não existe")
         }
-        
+
+        else {
+            toast("Erro!", "Senha ou email inválidos")
+        }
         return res
 
-
-    } catch (error) {
+    }
+    catch (error) {
         console.log(error);
     }
 }
@@ -51,9 +48,9 @@ const createUser = async (body) => {
         })
         const res = await request.json()
         if (request.ok) {
-                window.location.replace("../pages/login.html")
+            window.location.replace("../pages/login.html")
         }
-        
+
         return res
     } catch (error) {
         console.log(error);
@@ -69,7 +66,7 @@ const readAll = async () => {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token.token}`,
             },
-            
+
         })
         const res = await request.json()
         return res
@@ -87,7 +84,7 @@ const readProfile = async () => {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token.token}`,
             },
-            
+
         })
         const res = await request.json()
         return res
@@ -108,10 +105,10 @@ const updateProfile = async (body) => {
             body: JSON.stringify(body)
         })
         const res = await request.json()
-        if(request.ok){    
-            toast("Sucesso!","Perfil atualizado com sucesso") 
-            return res      
-        }else{
+        if (request.ok) {
+            toast("Sucesso!", "Perfil atualizado com sucesso")
+            return res
+        } else {
             toast('Erro!', 'Tente novamente')
         }
     } catch (error) {
@@ -149,10 +146,10 @@ const createPet = async (body) => {
             body: JSON.stringify(body)
         })
         const res = await request.json()
-        if(request.ok){    
-            toast("Sucesso!","Novo pet criado com sucesso") 
-            return res      
-        }else{
+        if (request.ok) {
+            toast("Sucesso!", "Novo pet criado com sucesso")
+            return res
+        } else {
             toast('Erro!', 'Tente novamente')
         }
     } catch (error) {
@@ -167,7 +164,7 @@ const readAllPets = async () => {
             headers: {
                 "Content-Type": "application/json",
             },
-            
+
         })
         const res = await request.json()
         return res
@@ -185,7 +182,7 @@ const readAllMyPets = async () => {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token.token}`,
             },
-            
+
         })
         const res = await request.json()
         return res
@@ -206,10 +203,10 @@ const updatePetById = async (body, petId) => {
             body: JSON.stringify(body)
         })
         const res = await request.json()
-        if(request.ok){    
-            toast("Sucesso!","Pet atualizado com sucesso") 
-            return res      
-        }else{
+        if (request.ok) {
+            toast("Sucesso!", "Pet atualizado com sucesso")
+            return res
+        } else {
             toast('Erro!', 'Tente novamente')
         }
     } catch (error) {
@@ -229,10 +226,10 @@ const deletePetById = async (petId) => {
 
         })
         const res = await request.json()
-        if(request.ok){    
-            toast("Sucesso!","Pet deletado com sucesso") 
-            return res      
-        }else{
+        if (request.ok) {
+            toast("Sucesso!", "Pet deletado com sucesso")
+            return res
+        } else {
             toast('Erro!', 'Tente novamente')
         }
     } catch (error) {
@@ -268,7 +265,7 @@ const readAllMyAdoptions = async () => {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token.token}`,
             },
-            
+
         })
         const res = await request.json()
         return res
@@ -286,7 +283,7 @@ const readAdoptionById = async (adoptionId) => {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token.token}`,
             },
-            
+
         })
         const res = await request.json()
         return res
@@ -304,7 +301,7 @@ const readmyAdoption = async () => {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token.token}`,
             },
-            
+
         })
         const res = await request.json()
         return res
