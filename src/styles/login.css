@@ -77,6 +77,9 @@
         margin-top: 10px;
 
     }
+    .logo-desktop{
+        width: 60%;
+    }
     #section-title{
         display: flex;
         flex-direction: column;
@@ -85,12 +88,14 @@
         gap: 18px;
         align-items: center;
         background: var(--color-secondary);
+        border-radius: var(--radius-4);
         padding: 20px;
         min-width: 50%;
     }
     .section-login{
         background: var(--color-white);
         min-width: 50%;  
+        border-radius: 0px 10px 10px 0px;
     }
     
     .inputs-login{
@@ -100,8 +105,9 @@
     }
     .inputs-login:hover{
         border: var(--border-2) var(--color-main);
-        background-color: var(--color-white);
-        color: var(--color-black);    
+        background-color: var(--color-main);
+        color: var(--color-white);    
+        transition: ease 0.4s;
     }
     
 
@@ -117,9 +123,14 @@
         margin-top: 5px;
         border-radius: var(--radius-16);
     }
+    .btn-redirectHome:hover{
+        color: var(--color-white);
+        background: var(--color-main);
+    }
     .div-redirection > a{
         text-decoration: none;
         color: var(--color-main);
+        transition: ease 0.4s;
     }
 
 }
