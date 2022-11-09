@@ -105,9 +105,8 @@
     }
     .inputs-login:hover{
         border: var(--border-2) var(--color-main);
-        background-color: var(--color-main);
-        color: var(--color-white);    
-        transition: ease 0.4s;
+        background-color: var(--color-white);
+        color: var(--color-black);
     }
     
 
