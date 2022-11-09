@@ -88,12 +88,12 @@
 
 .modal-button{
     height: 40px;
-    border-radius: var(--radius-4);
+    border-radius: var(--radius-16);
 }
 
 .modal-button-2{
     height: 40px;
-    border-radius: var(--radius-4);
+    border-radius: var(--radius-16);
 }
 
 @keyframes animationModal{
