@@ -432,6 +432,12 @@ const renderPetList = async () => {
         
                 const inputThree = document.createElement('select')
                 inputThree.classList = 'modal-select'
+                const firstOption = document.createElement('option')
+                firstOption.classList = 'modal-select'
+                firstOption.value = pet.species
+                firstOption.innerText = pet.species
+                firstOption.hidden = true
+                inputThree.append(firstOption)
 
                 speciesList.forEach(species => {
                     const option = document.createElement('option')
