@@ -432,12 +432,7 @@ const renderPetList = async () => {
         
                 const inputThree = document.createElement('select')
                 inputThree.classList = 'modal-select'
-                const optionFixed = document.createElement('option')
-                optionFixed.innerText = 'Espécie'
-                optionFixed.hidden = true
-                optionFixed.classList = 'modal-select'
 
-                inputThree.append(optionFixed)
                 speciesList.forEach(species => {
                     const option = document.createElement('option')
                     option.classList = 'modal-select'
@@ -471,15 +466,15 @@ const renderPetList = async () => {
                 form.addEventListener('submit', async(event)=>{
                     event.preventDefault()
                     fullUl.innerHTML = ''
-                    const elements = [...form.elements]
-                    const body = {}
+                    const elements = [...form.elements]              
+                    const body = {}   
                     elements.forEach(elt =>{
-                        if(elt.tagName == "INPUT"){
+                        if(elt.tagName == 'INPUT'){
                             body[elt.id] = elt.value
-                        }else if(elt.tagName == "SELECT"){
+                        }else if(elt.tagName == 'SELECT'){
                             body['species'] = elt.value
                         }
-                    })
+                    })      
                     await updatePetById(body, pet.id)
                     renderPetList()
                     container.classList.add('animation-close-modal')
