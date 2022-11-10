@@ -151,7 +151,7 @@ const modalAdopt = async (id, name, bread, species, avatar_url, guardian) => {
     const children = document.createElement('div')
     children.classList = 'modal-content1 flex'
 
-    const divImg = document.createElement('div')
+   const divImg = document.createElement('div')
     divImg.classList = 'flex al-center jus-center'
     
     const imgModal= document.createElement("img")
