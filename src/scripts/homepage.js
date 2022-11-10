@@ -8,6 +8,9 @@ const profileAvatar = async () => {
     const { avatar_url } = await readProfile()
     if (token.token) {
         profileAvatar.src = avatar_url
+        profileAvatar.addEventListener('error', (e) => {
+            profileAvatar.src = './src/imgs/noimage.png'
+        })
         profileAvatarBox.classList = 'profile-avatar'
     }
 }
