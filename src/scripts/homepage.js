@@ -9,7 +9,7 @@ const profileAvatar = async () => {
     if (token.token) {
         profileAvatar.src = avatar_url
         profileAvatar.addEventListener('error', (e) => {
-            profileAvatar.src = './src/imgs/imgnotfound.png'
+            profileAvatar.src = './src/imgs/imgnotfound.jpg'
         })
         profileAvatarBox.classList = 'profile-avatar'
     }
