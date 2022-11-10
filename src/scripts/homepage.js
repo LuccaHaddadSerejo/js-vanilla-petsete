@@ -153,9 +153,17 @@ const modalAdopt = async (id, name, bread, species, avatar_url, guardian) => {
 
     const divImg = document.createElement('div')
     divImg.classList = 'flex al-center jus-center'
-    divImg.insertAdjacentHTML('beforeend', `
-    <img class='img-modal-adoption' src="${avatar_url}" alt="pet avatar">
-    `)
+    
+    const imgModal= document.createElement("img")
+    imgModal.classList="img-modal-adoption"
+
+    imgModal.addEventListener('error', (e) => {
+        imgModal.src ='./src/imgs/noimage.png'
+    })
+    imgModal.src=avatar_url
+    imgModal.alt="pet avatar"
+    
+    divImg.append(imgModal)
 
     const divInfo = document.createElement('div')
     divInfo.classList = 'info-modal-adoption flex flex-col gap18'
