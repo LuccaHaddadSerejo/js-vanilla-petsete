@@ -4,10 +4,11 @@ import{getLocalStorage} from "./localStorage.js"
 
 function verificLogin(){
     const localStorage = getLocalStorage()
-    if (localStorage.user){
+    if (localStorage != ""){
         window.location.replace('../../index.html')
     }
 }
+
 verificLogin()
 
 function eventLogin(){
@@ -17,6 +18,8 @@ form.addEventListener("submit", async(event)=>{
     event.preventDefault()
     const object = getValues(spreadForm)
     login(object)
+    const pass = document.querySelector('#password')
+    pass.value = ''
 })
 }
 eventLogin()

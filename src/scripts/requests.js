@@ -19,20 +19,14 @@ const login = async (body) => {
             setTimeout(() => {
                 window.location.replace("../../index.html")
             }, 4000);
-
         }
-        else if (res.message == 'Email not found') {
-            toast("Erro!", "Este email não existe")
-        }
-
         else {
             toast("Erro!", "Senha ou email inválidos")
         }
         return res
-
     }
     catch (error) {
-        console.log(error);
+        toast("Erro!", 'Algo deu errado')
     }
 }
 
@@ -46,19 +40,18 @@ const createUser = async (body) => {
             body: JSON.stringify(body)
         })
         const res = await request.json()
-        console.log(res)
         if (request.ok) {
             toast("Sucesso!", "Cadastro feito com sucesso.")
             setTimeout(() => {
                 window.location.replace("../pages/login.html")
             }, 4000);
         } else {
-            toast("Erro!", "Algo deu errado.")
+            toast("Erro!", res.message)
         }
 
         return res
     } catch (error) {
-        console.log(error);
+        toast("Erro!", 'Algo deu errado')
     }
 }
 
@@ -80,7 +73,7 @@ const readAll = async () => {
         const res = await request.json()
         return res
     } catch (error) {
-        console.log(error);
+        toast("Erro!", 'Algo deu errado')
     }
 }
 
@@ -98,7 +91,7 @@ const readProfile = async () => {
         const res = await request.json()
         return res
     } catch (error) {
-        console.log(error);
+        toast("Erro!", 'Algo deu errado')
     }
 }
 
@@ -121,7 +114,7 @@ const updateProfile = async (body) => {
             toast('Erro!', 'Tente novamente')
         }
     } catch (error) {
-        console.log(error);
+        toast("Erro!", 'Algo deu errado')
     }
 }
 
@@ -139,7 +132,7 @@ const deleteProfile = async () => {
         const res = await request.json()
         return res
     } catch (error) {
-        console.log(error);
+        toast("Erro!", 'Algo deu errado')
     }
 }
 
@@ -162,7 +155,7 @@ const createPet = async (body) => {
             toast('Erro!', 'Tente novamente')
         }
     } catch (error) {
-        console.log(error);
+        toast("Erro!", 'Algo deu errado')
     }
 }
 
@@ -178,7 +171,7 @@ const readAllPets = async () => {
         const res = await request.json()
         return res
     } catch (error) {
-        console.log(error);
+        toast("Erro!", 'Algo deu errado')
     }
 }
 
@@ -196,7 +189,7 @@ const readAllMyPets = async () => {
         const res = await request.json()
         return res
     } catch (error) {
-        console.log(error);
+        toast("Erro!", 'Algo deu errado')
     }
 }
 
@@ -219,7 +212,7 @@ const updatePetById = async (body, petId) => {
             toast('Erro!', 'Tente novamente')
         }
     } catch (error) {
-        console.log(error);
+        toast("Erro!", 'Algo deu errado')
     }
 }
 
@@ -242,7 +235,7 @@ const deletePetById = async (petId) => {
             toast('Erro!', 'Tente novamente')
         }
     } catch (error) {
-        console.log(error);
+        toast("Erro!", 'Algo deu errado')
     }
 }
 
@@ -261,7 +254,7 @@ const createAdoption = async (body) => {
         toastHome('Sucesso!', 'Parabéns pela adoção!')
         return res
     } catch (error) {
-        console.log(error);
+        toast("Erro!", 'Algo deu errado')
     }
 }
 
@@ -279,7 +272,7 @@ const readAllMyAdoptions = async () => {
         const res = await request.json()
         return res
     } catch (error) {
-        console.log(error);
+        toast("Erro!", 'Algo deu errado')
     }
 }
 
@@ -297,7 +290,7 @@ const readAdoptionById = async (adoptionId) => {
         const res = await request.json()
         return res
     } catch (error) {
-        console.log(error);
+        toast("Erro!", 'Algo deu errado')
     }
 }
 
@@ -315,7 +308,7 @@ const readmyAdoption = async () => {
         const res = await request.json()
         return res
     } catch (error) {
-        console.log(error);
+        toast("Erro!", 'Algo deu errado')
     }
 }
 
@@ -333,7 +326,7 @@ const updateAdoptionById = async (body, adoptionId) => {
         const res = await request.json()
         return res
     } catch (error) {
-        console.log(error);
+        toast("Erro!", 'Algo deu errado')
     }
 }
 
@@ -350,7 +343,7 @@ const deleteAdoptionById = async (adoptionId) => {
         const res = await request.json()
         return res
     } catch (error) {
-        console.log(error);
+        toast("Erro!", 'Algo deu errado')
     }
 }
 
