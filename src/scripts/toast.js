@@ -9,10 +9,10 @@ const toast = (title, message) => {
 
     if (title == "Sucesso!") {
         container.classList.add("successToast")
-        icon.src = "/src/imgs/check.svg"
+        icon.src = "../imgs/check.svg"
     } else {
         container.classList.add("errorToast")
-        icon.src = "/src/imgs/error.svg"
+        icon.src = "../imgs/error.svg"
     }
 
     const textContainer = document.createElement("div")

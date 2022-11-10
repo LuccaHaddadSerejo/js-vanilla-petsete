@@ -1,7 +1,15 @@
+import { getLocalStorage } from "./localStorage.js"
 import { createUser } from "./requests.js"
-import{verificLogin} from "./login.js"
 
-verificLogin()
+
+function verificRegister(){
+    const localStorage = getLocalStorage()
+    if (localStorage != ""){
+        window.location.replace('../../index.html')
+    }
+}
+
+verificRegister()
 
 const eventRegister = async () => {
     const inputUsername = document.querySelector("#username");
@@ -19,8 +27,8 @@ const eventRegister = async () => {
             password: inputPassword.value,
             avatar_url: inputAvatar.value
         }
-        console.log(body)
         await createUser(body)
+        form.reset()
     })
 }
 eventRegister();
