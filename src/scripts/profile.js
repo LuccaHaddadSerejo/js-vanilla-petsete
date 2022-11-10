@@ -31,6 +31,9 @@ const readUserData = async () => {
     const user = await readProfile()
 
     const image = document.querySelector('.user-img')
+    image.addEventListener('error', (e) => {
+        image.src = '../imgs/imgnotfound.jpg'
+    })
     image.src = user.avatar_url
 
     const name = document.querySelector('#userName')
@@ -349,6 +352,9 @@ const renderPetList = async () => {
     
             const liImg = document.createElement('img')
             liImg.classList = 'pet-img'
+            liImg.addEventListener('error', (e) => {
+                liImg.src = '../imgs/noimage.png'
+            })
             liImg.src = pet.avatar_url
     
             const liDescription= document.createElement('div')
