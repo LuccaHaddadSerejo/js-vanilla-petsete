@@ -520,8 +520,11 @@ const renderPetList = async () => {
         
                 const title = document.createElement('h2')
                 title.classList = 'modal-title'
-                title.innerText = 'Deseja mesmo deletar sua conta?'
-        
+                if(pet.available_for_adoption == true){
+                    title.innerText = 'Deseja mesmo deletar seu pet?'
+                }else{
+                    title.innerText = 'Deseja mesmo doar seu pet?'
+                }
                 const divButtons = document.createElement('div')
                 divButtons.classList = 'modal-div-buttons'
         
